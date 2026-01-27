@@ -15,6 +15,8 @@ import { logos } from '../data/logos';
 import ArrowSeparator from '../components/ui/separator/ArrowSeparator.astro'
 import GlowLineSeparator from '../components/ui/separator/GlowLineSeparator.astro'
 
+import { author } from '../data/author';
+
 // Logos
 import astroLogo from '../assets/logos/Astro-logo.svg';
 import googleAdsLogo from '../assets/logos/GoogleAds-logo.svg';
@@ -33,7 +35,7 @@ import figmaLogo from '../assets/logos/Figma-logo.svg';
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'Site Author',
+      name: author.name,
       url: new URL('/', Astro.site).toString(),
       logo: new URL('/favicon.svg', Astro.site).toString(),
       sameAs: [
