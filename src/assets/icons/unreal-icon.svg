@@ -1,0 +1,21 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="250" cy="250" r="240" fill="black" />
+  
+  <circle cx="250" cy="250" r="230" fill="none" stroke="white" stroke-width="5" stroke-dasharray="15,10" opacity="0.3" />
+
+  <path d="M150 150 
+           V300 
+           C150 380, 350 380, 350 300 
+           V150 
+           H310 
+           V300 
+           C310 330, 190 330, 190 300 
+           V150 
+           Z" 
+        fill="white" />
+  
+  <path d="M150 150 L110 110 L150 130 Z" fill="white" />
+  <path d="M350 150 L390 110 L350 130 Z" fill="white" />
+  
+  <rect x="180" y="380" width="140" height="15" rx="5" fill="white" />
+</svg>
