@@ -17,11 +17,6 @@ description: "Bring iconic Nickelodeon heroes into a world of fantasy and
   battles, dynamic environments, it's an engaging gameplay experience for
   players of all ages. "
 heroImage: /src/assets/portfolio/Dice/HeroImage.jpg
-trailer: https://youtu.be/F4ihj-0CB24
-tags:
-  - PetitFabrik
-  - Unreal Engine
-  - Game Development
 techStack:
   - Unreal Engine 5
   - Blueprint
@@ -31,9 +26,15 @@ techStack:
   - Optimization
   - Niagara
   - Look Dev
+tags:
+  - PetitFabrik
+  - Unreal Engine
+  - Game Development
+trailer: https://youtu.be/F4ihj-0CB24
 screenshots:
   - /src/assets/portfolio/Dice/01.jpg
   - /src/assets/portfolio/Dice/02.jpg
   - /src/assets/portfolio/Dice/03.jpg
   - /src/assets/portfolio/Dice/04.jpg
 ---
+Aqui vai o texto do portfolio
