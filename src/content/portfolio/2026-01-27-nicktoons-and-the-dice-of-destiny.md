@@ -39,7 +39,7 @@ screenshots:
 ---
 ### As Lead Technical Artist on **Nicktoons & The Dice of Destiny**, an action RPG featuring iconic Nickelodeon characters in a fantasy setting, I led the bridge between art and programming to ensure the technical viability of the creative vision. Beyond resolving production bottlenecks and ensuring that dynamic combat and detailed environments performed stably across all platforms, I was primarily responsible for the project's visual stylization, defining the technical processes that established the title's unique aesthetic. My role was pivotal in elevating the overall visual polish, implementing solutions that optimized the workflow and ensured the delivery of a high-fidelity product within the established timeline.
 
-My responsibilities included:
+**My responsibilities included:**
 
 *   Direct responsibility for visual stylization, establishing the final technical look of the game and ensuring aesthetic cohesion across various Nickelodeon universes.
     
