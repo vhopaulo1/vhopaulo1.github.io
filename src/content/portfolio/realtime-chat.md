@@ -7,6 +7,16 @@ techStack: "Phoenix • WebSockets • Redis • Docker"
 ctaText: "Live Demo →"
 ctaLink: "#"
 tags: ["realtime", "websocket", "phoenix"]
+company: "Awesome Games Co."
+whereToPlay:
+  - platform: "Steam"
+    url: "https://store.steampowered.com/app/12345/Realtime_Chat_Game"
+  - platform: "PlayStation"
+    url: "https://playstation.com/game"
+trailer: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+screenshots:
+  - "../../assets/placeholder-game.png"
+  - "../../assets/placeholder-game.png"
 ---
 
 # Realtime Chat Service

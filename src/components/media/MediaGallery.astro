@@ -1,0 +1,352 @@
+---
+import { type ImageMetadata } from 'astro';
+
+interface Props {
+  screenshots?: ImageMetadata[];
+  trailer?: string;
+  title?: string;
+}
+
+const { screenshots = [], trailer, title = "Gallery" } = Astro.props;
+
+// Helper to extract YouTube ID
+function getYouTubeId(url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+}
+
+// Prepare items
+const items = [];
+
+if (trailer) {
+  const videoId = getYouTubeId(trailer);
+  if (videoId) {
+    items.push({
+      type: 'video',
+      src: `https://www.youtube.com/embed/${videoId}?enablejsapi=1`,
+      thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+      alt: 'Game Trailer'
+    });
+  }
+}
+
+if (screenshots) {
+  screenshots.forEach((shot, index) => {
+    items.push({
+      type: 'image',
+      src: shot.src,
+      thumbnail: shot.src,
+      alt: `Screenshot ${index + 1}`
+    });
+  });
+}
+
+const hasMedia = items.length > 0;
+---
+
+{hasMedia && (
+<media-gallery data-items={JSON.stringify(items)} class="block w-full not-prose">
+  
+  {/* Main Viewer */}
+  <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl mb-4 group">
+    
+    <div id="gallery-main-container" class="w-full h-full flex items-center justify-center">
+        {/* Content injected via JS */}
+    </div>
+    
+    {/* Navigation Overlay (Optional, for prev/next on main image) */}
+    <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm" aria-label="Previous image">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm" aria-label="Next image">
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  {/* Thumbnail Strip */}
+  <div class="relative flex items-center gap-2">
+    
+    <button id="thumb-prev" class="shrink-0 bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--color-text-primary)] p-2 rounded-lg border border-[var(--color-border)] transition-colors disabled:opacity-50" aria-label="Scroll thumbnails left">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <div id="thumbnails-track" class="flex gap-3 overflow-x-auto scroll-smooth hide-scrollbar px-1 py-1 w-full snap-x">
+      {items.map((item, index) => (
+        <button 
+          data-index={index}
+          class={`thumbnail-btn shrink-0 w-32 aspect-video rounded-lg overflow-hidden border-2 transition-all duration-200 snap-start relative group ${index === 0 ? 'border-[var(--accent)]' : 'border-transparent opacity-70 hover:opacity-100'}`}
+          aria-label={`View ${item.alt}`}
+        > 
+           <img src={item.thumbnail} alt={item.alt} class="w-full h-full object-cover" />
+           {item.type === 'video' && (
+             <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
+                <div class="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="black" stroke="none"><path d="M5 3l14 9-14 9V3z"/></svg>
+                </div>
+             </div>
+           )}
+        </button>
+      ))}
+    </div>
+
+    <button id="thumb-next" class="shrink-0 bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--color-text-primary)] p-2 rounded-lg border border-[var(--color-border)] transition-colors disabled:opacity-50" aria-label="Scroll thumbnails right">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  {/* Fullscreen Modal */}
+  <div id="fullscreen-modal" class="fixed inset-0 z-50 bg-black/95 hidden flex flex-col opacity-0 transition-opacity duration-300">
+    
+    {/* Close Button */}
+    <button id="close-modal" class="absolute top-4 right-4 text-white hover:text-[var(--accent)] p-2 z-50 rounded-full bg-black/50 hover:bg-black/70 transition-colors">
+       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    {/* Main Content Area */}
+    <div class="flex-1 flex items-center justify-center relative p-4 w-full h-full">
+        <div id="modal-content" class="w-full h-full flex items-center justify-center max-w-7xl mx-auto">
+            {/* Content injected via JS */}
+        </div>
+
+        {/* Modal Navigation */}
+        <button id="modal-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="modal-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white p-4 rounded-full bg-black/50 hover:bg-black/70 transition-colors">
+             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+    </div>
+  </div>
+
+  <style>
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    :global(body.overflow-hidden) {
+        overflow: hidden;
+    }
+  </style>
+
+  <script>
+    class MediaGallery extends HTMLElement {
+      items: any[] = [];
+      currentIndex = 0;
+      mainContainer: HTMLElement | null = null;
+      thumbnails: NodeListOf<HTMLButtonElement> | null = null;
+      thumbTrack: HTMLElement | null = null;
+      
+      // Modal elements
+      modal: HTMLElement | null = null;
+      modalContent: HTMLElement | null = null;
+      isModalOpen: boolean = false;
+
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        const itemsAttr = this.getAttribute('data-items');
+        if (!itemsAttr) return;
+        
+        try {
+          this.items = JSON.parse(itemsAttr);
+        } catch (e) {
+          console.error('Failed to parse gallery items');
+          return;
+        }
+
+        this.mainContainer = this.querySelector('#gallery-main-container');
+        this.thumbTrack = this.querySelector('#thumbnails-track');
+        this.thumbnails = this.querySelectorAll('.thumbnail-btn');
+        
+        this.modal = this.querySelector('#fullscreen-modal');
+        this.modalContent = this.querySelector('#modal-content');
+
+        this.initListeners();
+        this.renderMain(0);
+      }
+
+      initListeners() {
+        // Thumbnail clicks
+        this.thumbnails?.forEach((btn, idx) => {
+          btn.addEventListener('click', () => {
+             this.changeIndex(idx);
+          });
+        });
+
+        // Main Navigation
+        this.querySelector('#prev-btn')?.addEventListener('click', (e) => { e.stopPropagation(); this.prev(); });
+        this.querySelector('#next-btn')?.addEventListener('click', (e) => { e.stopPropagation(); this.next(); });
+
+        // Thumbnail Scroll interaction
+        this.querySelector('#thumb-prev')?.addEventListener('click', () => {
+           this.thumbTrack?.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        this.querySelector('#thumb-next')?.addEventListener('click', () => {
+           this.thumbTrack?.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+
+        // Modal Controls
+        this.querySelector('#close-modal')?.addEventListener('click', () => this.closeModal());
+        this.querySelector('#modal-prev')?.addEventListener('click', () => this.prev());
+        this.querySelector('#modal-next')?.addEventListener('click', () => this.next());
+        
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (!this.isModalOpen) return;
+            if (e.key === 'Escape') this.closeModal();
+            if (e.key === 'ArrowLeft') this.prev();
+            if (e.key === 'ArrowRight') this.next();
+        });
+      }
+
+      openModal() {
+        if (!this.modal) return;
+        this.isModalOpen = true;
+        this.modal.classList.remove('hidden');
+        // Small timeout to allow display:block to apply before opacity transition
+        setTimeout(() => this.modal?.classList.remove('opacity-0'), 10);
+        document.body.classList.add('overflow-hidden');
+        this.renderModalContent();
+      }
+
+      closeModal() {
+        if (!this.modal) return;
+        this.isModalOpen = false;
+        this.modal.classList.add('opacity-0');
+        setTimeout(() => {
+            this.modal?.classList.add('hidden');
+            this.modalContent!.innerHTML = ''; // Clear content to stop iframe playback
+        }, 300);
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      changeIndex(newIndex: number) {
+        if (newIndex < 0) newIndex = this.items.length - 1;
+        if (newIndex >= this.items.length) newIndex = 0;
+        
+        this.currentIndex = newIndex;
+        this.renderMain(newIndex);
+        this.updateThumbnails(newIndex);
+        if (this.isModalOpen) this.renderModalContent();
+      }
+
+      next() {
+        this.changeIndex(this.currentIndex + 1);
+      }
+      
+      prev() {
+        this.changeIndex(this.currentIndex - 1);
+      }
+
+      updateThumbnails(index: number) {
+        this.thumbnails?.forEach((btn, idx) => {
+          if (idx === index) {
+            btn.classList.add('border-[var(--accent)]');
+            btn.classList.remove('border-transparent', 'opacity-70');
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            btn.classList.remove('border-[var(--accent)]');
+            btn.classList.add('border-transparent', 'opacity-70');
+          }
+        });
+      }
+
+      // Render content for inline viewer
+      renderMain(index: number) {
+        if (!this.mainContainer) return;
+
+        const item = this.items[index];
+        this.mainContainer.innerHTML = '';
+
+        const fadeWrapper = document.createElement('div');
+        fadeWrapper.className = 'w-full h-full animate-in fade-in duration-300';
+        // Open modal on click
+        fadeWrapper.onclick = (e) => {
+           // Don't open if clicking buttons inside (handled by stopPropagation on buttons, but safe check)
+           if ((e.target as HTMLElement).closest('button')) return;
+           this.openModal();
+        };
+
+        if (item.type === 'video') {
+            const iframe = document.createElement('iframe');
+            iframe.src = item.src;
+            iframe.width = '100%';
+            iframe.height = '100%';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.style.border = '0';
+            // Disable pointer events on iframe in thumbnail to allow click-through to modal? 
+            // Actually users might want to play video inline. 
+            // The requirement "when we click on the image... show it on full screen"
+            // For video, usually we want to play it. 
+            // Let's add an overlay for video to open fullscreen, OR just let video play inline. 
+            // "put the video inside this gallery also" implies unified behavior.
+            // If I click the video, it plays. I probably want an "Expand" button for video.
+            // For now, let's treat video as playable inline. The click handler is on wrapper. 
+            // If pointer-events is auto on iframe, it captures click.
+            
+            fadeWrapper.appendChild(iframe);
+            // Remove click listener for video to allow interaction
+            fadeWrapper.onclick = null; 
+            
+            // Add an expand button specifically for video?
+            const expandBtn = document.createElement('button');
+            expandBtn.className = 'absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10';
+            expandBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+            expandBtn.onclick = (e) => {
+                e.stopPropagation();
+                this.openModal();
+            };
+            fadeWrapper.appendChild(expandBtn);
+            fadeWrapper.classList.add('relative');
+
+        } else {
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            // "make the images fill the entire media gallery container" -> object-cover
+            img.className = 'w-full h-full object-cover cursor-zoom-in';
+            fadeWrapper.appendChild(img);
+        }
+        
+        this.mainContainer.appendChild(fadeWrapper);
+      }
+
+      // Render content for fullscreen modal
+      renderModalContent() {
+        if (!this.modalContent) return;
+        
+        const item = this.items[this.currentIndex];
+        this.modalContent.innerHTML = '';
+
+        if (item.type === 'video') {
+             const iframe = document.createElement('iframe');
+            iframe.src = item.src; // Autoplay? Maybe not to avoid noise blast
+            iframe.width = '100%';
+            iframe.height = '100%';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.style.border = '0';
+            this.modalContent.appendChild(iframe);
+        } else {
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            // Fullscreen usually object-contain to see whole image, but can be cover if desired.
+            // Standard gallery behavior is contain.
+            img.className = 'w-full h-full object-contain';
+            this.modalContent.appendChild(img);
+        }
+      }
+    }
+
+    customElements.define('media-gallery', MediaGallery);
+  </script>
+</media-gallery>
+)}

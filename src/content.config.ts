@@ -34,6 +34,17 @@ const portfolio = defineCollection({
 			ctaLink: z.string().optional(),
 			ctaText: z.string().optional(),
 			category: z.string().optional(),
+
+			// New fields
+			company: z.string().optional(),
+			whereToPlay: z.array(
+				z.object({
+					platform: z.string(),
+					url: z.string().url(),
+				})
+			).optional(),
+			screenshots: z.array(image()).optional(),
+			trailer: z.string().url().optional(), // Youtube URL
 		}),
 });
 

@@ -3,69 +3,109 @@ import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/sections/Header.astro';
 import Footer from '../components/sections/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Button from '../components/ui/button/Button.astro';
+import MediaGallery from '../components/media/MediaGallery.astro';
 
 type Props = CollectionEntry<'portfolio'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, techStack, ctaLink, ctaText } = Astro.props;
+const { title, description, heroImage, techStack, ctaLink, ctaText, company, whereToPlay, screenshots, trailer } = Astro.props;
+
+// Helper to get YouTube embed URL
+function getEmbedUrl(url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : url;
+}
 ---
 
 <html lang="en" data-theme="light" class="light">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			/* Align blog layout with site container to avoid right overflow and tight column */
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 100%;
-				max-width: 960px; /* widen column */
-				margin: auto;
-				padding: 0.05em;
-				color: var(--color-text-secondary);
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-				color: var(--color-text-primary);
-			}
+            /* Custom styles if needed, but using Tailwind mostly */
+            .sidebar-title {
+                font-size: 1.125rem; /* text-lg */
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
 		</style>
 	</head>
 
 	<body>
 		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage.src} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<h1>{title}</h1>
-                        {techStack && <p class="text-lg text-muted-foreground mb-4">{techStack}</p>}
-						<hr />
-					</div>
-					<div class="prose prose-lg dark:prose-invert max-w-none">
-						<slot />
-					</div>
-                    {ctaLink && ctaText && (
-                        <div class="mt-8 flex justify-center">
-                            <Button href={ctaLink} variant="primary" size="lg">{ctaText}</Button>
+		<main class="min-h-screen">
+			<article class="max-w-[1400px] mx-auto px-4 py-8 md:px-8">
+				
+                {/* Hero Image */}
+				<div class="w-full mb-10">
+					{heroImage && (
+                        <div class="rounded-xl overflow-hidden shadow-xl">
+                            <img width={1280} height={720} src={heroImage.src} alt={title} class="w-full h-auto object-cover max-h-[600px]" />
                         </div>
                     )}
+				</div>
+
+				<div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12">
+                    
+                    {/* Sidebar Information */}
+                    <aside class="space-y-8 h-fit lg:sticky lg:top-24">
+                        <div>
+							<h4 class="text-4xl font-bold mb-4 text-[var(--color-text-primary)] leading-tight">{title}</h4>
+                        </div>
+
+                        {company && (
+                            <div>
+                                <span class="sidebar-title text-[var(--color-text-primary)]">Company</span>
+                                <p class="text-[var(--color-text-secondary)]">{company}</p>
+                            </div>
+                        )}
+
+                        {whereToPlay && whereToPlay.length > 0 && (
+                            <div>
+                                <span class="sidebar-title text-[var(--color-text-primary)]">Where to play</span>
+                                <div class="flex flex-col gap-2 items-start">
+                                    {whereToPlay.map((item) => (
+                                        <a 
+                                            href={item.url} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            class="text-[var(--color-text-secondary)] hover:text-[var(--accent)] underline decoration-1 underline-offset-4 transition-colors uppercase text-sm tracking-wide font-medium"
+                                        >
+                                            {item.platform}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {techStack && (
+                             <div>
+                                <span class="sidebar-title text-[var(--color-text-primary)]">Tech Stack</span>
+                                <p class="text-[var(--color-text-primary)] opacity-80">{techStack}</p>
+                            </div>
+                        )}
+
+                        {ctaLink && (
+                             <div class="pt-4">
+                                <Button href={ctaLink} variant="primary" size="lg" className="w-full justify-center">{ctaText || "Visit Project"}</Button>
+                            </div>
+                        )}
+                    </aside>
+
+                    {/* Main Content */}
+					<div class="prose prose-lg dark:prose-invert max-w-none text-[var(--color-text-secondary)]">
+                        <header class="mb-8 border-b border-[var(--color-border)] pb-8">
+                            <p class="text-xl leading-relaxed opacity-90">{description}</p>
+                        </header>
+
+						<slot />
+                        
+                        {/* Media Gallery (Trailer + Screenshots) */}
+                        <div class="mt-12">
+                            <MediaGallery screenshots={screenshots} trailer={trailer} />
+                        </div>
+					</div>
 				</div>
 			</article>
 		</main>
