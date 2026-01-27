@@ -37,7 +37,7 @@ body {
     word-wrap: break-word;
     overflow-wrap: break-word;
     color: var(--color-text-secondary);
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.7;
     display: flex;
     flex-direction: column;
@@ -71,11 +71,11 @@ h6 {
 }
 
 h1 {
-    font-size: 2.75em;
+    font-size: 2.25em;
 }
 
 h2 {
-    font-size: 2.2em;
+    font-size: 2em;
 }
 
 h3 {
@@ -107,11 +107,13 @@ a:not(.sw-btn):not(.sw-btn-sm):not(.no-underline):hover {
 }
 
 p {
+    margin-top: 1em;
     margin-bottom: 1em;
 }
 
 .prose p {
-    margin-bottom: 0em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 textarea {
