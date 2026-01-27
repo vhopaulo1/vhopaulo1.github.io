@@ -32,10 +32,25 @@ content:
         fields:
           - name: platform
             label: Platform
-            type: string
+            type: object
+            fields:
+              - name: platform
+                label: Platform
+                type: string
+              - name: url
+                label: Link
+                type: string
           - name: url
             label: Link
-            type: string
+            type: object
+            fields:
+              - name: platform
+                label: Platform
+                type: string
+              - name: url
+                label: Link
+                type: string
+            
       - { name: pubDate, label: Publish Date, type: date }
       - { name: description, label: Description, type: string, option: { maxlength: 160 } }
       - { name: heroImage, label: Image, type: image }
