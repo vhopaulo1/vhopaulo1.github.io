@@ -79,10 +79,14 @@ function getEmbedUrl(url: string) {
                             </div>
                         )}
 
-                        {techStack && (
+                        {techStack && techStack.length > 0 && (
                              <div>
-                                <span class="sidebar-title text-[var(--color-text-primary)]">Tech Stack</span>
-                                <p class="text-[var(--color-text-primary)] opacity-80">{techStack}</p>
+                                <span class="sidebar-title text-[var(--color-text-primary)]">Technologies</span>
+                                <ul class="list-none space-y-2 p-0 m-0">
+                                    {techStack.map((tech) => (
+                                        <li class="text-[var(--color-text-primary)] opacity-80 text-sm">{tech}</li>
+                                    ))}
+                                </ul>
                             </div>
                         )}
 

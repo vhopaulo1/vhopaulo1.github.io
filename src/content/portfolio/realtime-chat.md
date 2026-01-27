@@ -3,10 +3,13 @@ title: "Realtime Chat Service"
 description: "Low‑latency chat with channels, presence, and backpressure handling. Includes load tests and horizontal scaling notes."
 pubDate: 2024-03-10
 heroImage: "../../assets/images/example-blog-hero3.jpg"
-techStack: "Phoenix • WebSockets • Redis • Docker"
-ctaText: "Live Demo →"
 ctaLink: "#"
 tags: ["realtime", "websocket", "phoenix"]
+techStack: 
+  - "Phoenix"
+  - "WebSockets"
+  - "Redis"
+  - "Docker"
 company: "Awesome Games Co."
 whereToPlay:
   - platform: "Steam"

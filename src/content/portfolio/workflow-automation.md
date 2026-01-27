@@ -4,8 +4,12 @@ pubDate: 2024-01-01
 description: Event‑driven workflows for data sync, notifications, and
   back‑office automation. Custom nodes, secrets management, retries, and
   metrics.
-heroImage: /src/assets/portfolio/unnamed.jpg
-techStack: n8n • Node.js • TypeScript • PostgreSQL
+heroImage: ../../assets/portfolio/unnamed.jpg
+techStack: 
+  - "n8n"
+  - "Node.js"
+  - "TypeScript"
+  - "PostgreSQL"
 ctaText: View Repo →
 ctaLink: "#"
 tags:

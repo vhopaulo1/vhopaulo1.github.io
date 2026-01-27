@@ -13,8 +13,13 @@ description: Travel through secret worlds within the massive Kukoo tree to find
   bosses, find hidden collectibles, and solve ancient puzzles. Journey solo or
   team up with up to three friends to enjoy a four-player adventure unlike
   anything you've seen before!
-heroImage: /src/assets/portfolio/Kukoos/Kukoos_HeroImage.png
-techStack: Unreal Engine 4 • Blueprint • Animation Blueprint • Shaders • UMG
+heroImage: ../../assets/portfolio/Kukoos/Kukoos_HeroImage.png
+techStack: 
+  - "Unreal Engine 4"
+  - "Blueprint"
+  - "Animation Blueprint"
+  - "Shaders"
+  - "UMG"
 ctaText: Play on Steam
 ctaLink: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
 tags:

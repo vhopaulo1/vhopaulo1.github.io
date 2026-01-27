@@ -30,7 +30,7 @@ const portfolio = defineCollection({
 			heroImage: image().optional(),
 			icon: z.string().optional(), // SVG string or path
 			tags: z.array(z.string()).optional(),
-			techStack: z.string().optional(),
+			techStack: z.array(z.string()).optional(),
 			ctaLink: z.string().optional(),
 			ctaText: z.string().optional(),
 			category: z.string().optional(),
