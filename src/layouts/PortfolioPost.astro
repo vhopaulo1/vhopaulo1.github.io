@@ -5,12 +5,14 @@ import Header from "../components/sections/Header.astro";
 import Footer from "../components/sections/Footer.astro";
 import Button from "../components/ui/button/Button.astro";
 import MediaGallery from "../components/media/MediaGallery.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
 type Props = CollectionEntry<"portfolio">["data"];
 
 const {
     title,
     description,
+    pubDate,
     heroImage,
     techStack,
     ctaLink,
@@ -124,6 +126,11 @@ function getEmbedUrl(url: string) {
                     >
                         {title}
                     </h1>
+                    <p
+                        class="text-xl text-[var(--color-text-secondary)] opacity-90 max-w-6xl mx-auto"
+                    >
+                        {description}
+                    </p>
                 </div>
 
                 <div
@@ -143,6 +150,16 @@ function getEmbedUrl(url: string) {
                                 </div>
                             )
                         }
+                        <div>
+                            <span
+                                class="sidebar-title text-[var(--color-text-primary)]"
+                            >
+                                Publish Date
+                            </span>
+                            <div class="text-[var(--color-text-secondary)]">
+                                <FormattedDate date={pubDate} />
+                            </div>
+                        </div>
 
                         {
                             whereToPlay && whereToPlay.length > 0 && (
@@ -203,14 +220,6 @@ function getEmbedUrl(url: string) {
                     <div
                         class="prose prose-lg dark:prose-invert max-w-none text-[var(--color-text-secondary)]"
                     >
-                        <header
-                            class="mb-8 border-b border-[var(--color-border)] pb-8"
-                        >
-                            <p class="text-xl leading-relaxed opacity-90">
-                                {description}
-                            </p>
-                        </header>
-
                         <slot />
                     </div>
                 </div>
