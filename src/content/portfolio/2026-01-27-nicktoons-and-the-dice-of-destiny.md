@@ -49,8 +49,6 @@ My responsibilities included:
     
 *   Development of custom tools to optimize the production pipeline and streamline the work of environment and character artists.
     
-*   Implementation of animation systems and a dedicated focus on game "juice," ensuring satisfying visual and audio feedback during combat and interactions.
-    
 *   Deep performance optimization to guarantee stable frame rates across different hardware and consoles.
     
 *   Management of complex technical bugs and debugging of integration issues between assets and the engine.
