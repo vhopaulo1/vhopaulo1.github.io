@@ -1,7 +1,7 @@
 media: src/assets
 content: 
   - name: posts
-    label: posts
+    label: Blog
     type: collection
     path: src/content/blog
     fields:
@@ -14,7 +14,7 @@ content:
       - { name: author, label: Author, type: string }
       - { name: body, label: Body, type: rich-text }
   - name: works
-    label: works
+    label: Portfolio
     type: collection
     path: src/content/portfolio
     fields:
