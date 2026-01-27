@@ -1,33 +1,33 @@
 export const skills = [
   {
     icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>`,
-    title: "System Design & Architecture",
-    description: "Designing scalable, resilient services, clear boundaries, and data models; pragmatic trade‑offs documented via ADRs/RFCs.",
+    title: "Technical Art & Pipeline Design",
+    description: "Designing scalable asset pipelines and automation tools; bridging the gap between art and code with documented technical standards.",
   },
   {
-    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 17l-5-5 5-5v3l-2 2 2 2v3zm8-10l5 5-5 5v-3l2-2-2-2V7z"/></svg>`,
-    title: "Full‑Stack Development",
-    description: "End‑to‑end features with React/Next.js, Node.js, and TypeScript, with strong UX, accessibility, and performance.",
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.97 4.43c-.16.09-.33.14-.5.14s-.34-.05-.5-.14l-7.97-4.43c-.32-.17-.53-.5-.53-.88v-9c0-.38.21-.71.53-.88l7.97-4.43c.16-.09.33-.14.5-.14s.34.05.5.14l7.97 4.43c.32.17.53.5.53.88v9z"/></svg>`,
+    title: "Unreal Engine Development",
+    description: "Architecting game systems using C++ and Blueprints; focusing on modularity, performance, and high-quality gameplay code.",
   },
   {
-    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a3 3 0 110 6 3 3 0 010-6zm0 6v6m0 0a3 3 0 100 6 3 3 0 000-6zm0 0a3 3 0 10-6 0 3 3 0 006 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
-    title: "APIs & Distributed Systems",
-    description: "Designing REST/GraphQL APIs, background jobs, queues, idempotency, retries, and observability for reliability.",
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v18M3 12h18M12 3l4.5 4.5M12 3L7.5 7.5M12 21l4.5-4.5M12 21l-4.5-4.5M3 12l4.5 4.5M3 12L7.5 7.5M21 12l-4.5 4.5M21 12l-4.5-4.5"/></svg>`,
+    title: "Shaders & VFX Systems",
+    description: "Developing custom HLSL shaders and Niagara VFX; pushing visual fidelity while maintaining strict performance budgets.",
   },
   {
-    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7 3 4 4.79 4 7v10c0 2.21 3 4 8 4s8-1.79 8-4V7c0-2.21-3-4-8-4zm0 2c3.87 0 6 .93 6 2s-2.13 2-6 2-6-.93-6-2 2.13-2 6-2zm0 6c3.87 0 6 .93 6 2s-2.13 2-6 2-6-.93-6-2 2.13-2 6-2z"/></svg>`,
-    title: "Databases & Caching",
-    description: "Schema design, migrations, and performance tuning with Postgres; caching and rate‑limiting with Redis.",
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>`,
+    title: "Rendering & Optimization",
+    description: "Implementing rendering best practices, profiling performance (CPU/GPU), and optimizing draw calls, memory, and LOD systems.",
   },
   {
-    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>`,
-    title: "Testing & CI/CD",
-    description: "Unit, integration, and E2E tests (Jest, Playwright) with GitHub Actions pipelines, preview envs, and quality gates.",
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>`,
+    title: "Tooling & Automation",
+    description: "Building production tools with Python and Qt for Autodesk Maya and Unreal Engine to streamline artist workflows and asset management.",
   },
   {
-    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 18H6a4 4 0 010-8 5 5 0 019.9-1.5A4.5 4.5 0 1119 18z"/></svg>`,
-    title: "Cloud & DevOps",
-    description: "AWS, Docker, and Terraform; secure deployments, monitoring/alerts, and cost‑aware operations.",
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`,
+    title: "R&D and Prototyping",
+    description: "Rapidly iterating on new features and technologies; researching real-time rendering techniques to stay ahead of industry standards.",
   },
 ];
 
