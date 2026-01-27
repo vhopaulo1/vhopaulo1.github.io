@@ -1,5 +1,10 @@
 ---
 title: Kukoos Lost Pets
+whereToPlay:
+  - platform: Steam
+    url: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
+  - platform: Playstation
+    url: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
 pubDate: 2021-12-15
 description: Travel through secret worlds within the massive Kukoo tree to find
   your friends and end the pet rebellion! This charming 3D platformer takes you
