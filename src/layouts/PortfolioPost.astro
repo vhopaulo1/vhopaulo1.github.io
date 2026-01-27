@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/sections/Header.astro';
+import Footer from '../components/sections/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Button from '../components/ui/button/Button.astro';
+
+type Props = CollectionEntry<'portfolio'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, techStack, ctaLink, ctaText } = Astro.props;
+---
+
+<html lang="en" data-theme="light" class="light">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+		<main class="w-full max-w-full m-0 p-0">
+			<article>
+				<div class="w-full">
+					{heroImage && <img width={1020} height={510} src={heroImage.src} alt="" class="block w-full h-auto object-cover md:rounded-xl shadow-lg mb-8" />}
+				</div>
+				<div class="w-[720px] max-w-[calc(100%-2em)] mx-auto px-4 text-foreground">
+					<div class="mb-8 py-4 text-center leading-none">
+						<div class="mb-2 text-muted-foreground">
+							<FormattedDate date={pubDate} />
+							{
+								updatedDate && (
+									<div class="italic">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						<h1 class="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+                        {techStack && <p class="text-lg text-muted-foreground mb-4">{techStack}</p>}
+						<hr class="border-t border-border my-4" />
+					</div>
+					<div class="prose prose-lg dark:prose-invert max-w-none">
+						<slot />
+					</div>
+                    {ctaLink && ctaText && (
+                        <div class="mt-8 flex justify-center">
+                            <Button href={ctaLink} variant="primary" size="lg">{ctaText}</Button>
+                        </div>
+                    )}
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
