@@ -20,7 +20,6 @@ trailer: https://youtu.be/J9A0n7HFHbM
 screenshots:
   - /src/assets/05.jpg
   - /src/assets/portfolio/Trolls/06.png
-  - /src/assets/portfolio/Trolls/05.jpg
   - /src/assets/portfolio/Trolls/01.jpg
   - /src/assets/portfolio/Trolls/02.jpg
   - /src/assets/portfolio/Trolls/03.jpg
