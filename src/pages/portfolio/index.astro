@@ -21,8 +21,8 @@ const projects = (await getCollection('portfolio')).sort(
 			<HeroSection title="Featured Projects" subtitle="A collection of titles and interactive experiences I helped bring to life." />
 			
             <section class="w-full py-10">
-                <div class="mx-auto max-w-6xl px-4">
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="w-full mx-auto px-4">
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {projects.map((project) => (
                       <article class="card-surface p-4 flex flex-col gap-3 relative h-full">
                         {project.data.heroImage && (

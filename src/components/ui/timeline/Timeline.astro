@@ -43,7 +43,7 @@ const { items, centered = true } = props;
 ---
 
 {centered ? (
-  <div class="relative mx-auto max-w-5xl px-0 md:px-0">
+  <div class="relative mx-auto w-full max-w-none px-0 md:px-0">
     <!-- Center vertical line -->
     <div class="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-[var(--border)]"></div>
 
@@ -95,7 +95,7 @@ const { items, centered = true } = props;
     </div>
   </div>
 ) : (
-    <div class="relative mx-auto max-w-5xl px-0 md:px-0">
+    <div class="relative mx-auto w-full max-w-none px-0 md:px-0">
     <!-- Left vertical line -->
     <div class="pointer-events-none absolute inset-y-0 left-0 md:left-5 w-px bg-[var(--border)]"></div>
     <div class="space-y-8 md:space-y-12">
