@@ -1,25 +1,60 @@
 media: src/assets
 content: 
   - name: posts
-    label: posts
+    label: Blog
     type: collection
     path: src/content/blog
     fields:
       - { name: title, label: Title, type: string }
       - { name: pubDate, label: Publish Date, type: date }
-      - { name: updatedDate, label: Last Update, type: date }
       - { name: description, label: Description, type: string, option: { maxlength: 160 } }
       - { name: category, label: Category, type: string }
-      - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true }
+      - name: tags
+        label: Tags
+        type: select
+        options:
+          creatable: true
+          multiple: true
+          values: [ ]
       - { name: heroImage, label: Image, type: image }
-      - { name: author, label: Author, type: string, default: "Paulo Henrique" }
+      - { name: author, label: Author, type: string }
       - { name: body, label: Body, type: rich-text }
-      - { name: published, label: Published, type: boolean, default: false}
-    view:
-      fields: [ title ]
-      primary: title
-      sort: [ date, title ]
-      default:
-        search: ''
-        sort: title
-        order: desc
+  - name: works
+    label: Portfolio
+    type: collection
+    path: src/content/portfolio
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: company, label: Company, type: string }
+      - name: whereToPlay
+        label: "Onde Jogar"
+        type: object
+        list: true
+        fields:
+          - name: platform
+            label: "Plataforma"
+            type: string
+          - name: url
+            label: "Link da Loja"
+            type: string
+      - { name: pubDate, label: Publish Date, type: date }
+      - { name: description, label: Description, type: string, option: { maxlength: 160 } }
+      - { name: heroImage, label: Image, type: image }
+      - { name: techStack, label: TechStack, type: string }
+      - { name: ctaText, label: CallToActionText, type: string }
+      - { name: ctaLink, label: CallToActionLink, type: string }
+      - { name: body, label: Body, type: rich-text }
+      - name: tags
+        label: Tags
+        type: select
+        options:
+          creatable: true
+          multiple: true
+          values: [ ]
+      - { name: trailer, label: Trailer, type: string }
+      - name: screenshots
+        label: Screenshots
+        type: image
+        options:
+          multiple: true
+          max: 6
