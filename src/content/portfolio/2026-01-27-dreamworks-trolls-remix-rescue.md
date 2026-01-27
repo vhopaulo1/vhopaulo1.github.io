@@ -18,11 +18,12 @@ description: "Play as Poppy, Branch and more of your favorite DreamWorks Trolls
 heroImage: /src/assets/portfolio/Trolls/HeroImage.jpg
 trailer: https://youtu.be/J9A0n7HFHbM
 screenshots:
-  - /src/assets/05.jpg
-  - /src/assets/portfolio/Trolls/06.png
   - /src/assets/portfolio/Trolls/01.jpg
   - /src/assets/portfolio/Trolls/02.jpg
   - /src/assets/portfolio/Trolls/03.jpg
+  - /src/assets/portfolio/Trolls/04.jpg
+  - /src/assets/portfolio/Trolls/05.jpg
+  - /src/assets/portfolio/Trolls/06.png
 ---
 ### I worked as a Technical Artist on the game Dreamwroks Trolls Remix Rescue, a 3D platformer where you play as Poppy, Branch and more of your favorite DreamWorks Trolls as you explore, smash, dance and battle your way towards rescuing the Troll Kingdom from a melodic mastermind who’s trying to alter the Trolls’ musical harmony.
 
