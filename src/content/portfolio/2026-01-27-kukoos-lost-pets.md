@@ -31,10 +31,10 @@ tags:
   - Game Development
 trailer: https://youtu.be/LrvceEgWU7g
 screenshots:
-  - /src/assets/02.jpg
-  - /src/assets/03.jpg
-  - /src/assets/01.jpg
-  - /src/assets/04.jpg
+  - /src/assets/portfolio/Kukoos/01.jpg
+  - /src/assets/portfolio/Kukoos/02.jpg
+  - /src/assets/portfolio/Kukoos/03.jpg
+  - /src/assets/portfolio/Kukoos/04.jpg
 ---
 ## I worked as a developer on the game Kukoos: Lost Pets, a 3D platformer where players control Kukoos to find their lost pets. The game can be played solo or with up to three friends in co-op.
 
