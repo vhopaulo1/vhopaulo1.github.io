@@ -19,6 +19,7 @@ tags:
   - PetitFabrik
   - Unreal Engine
   - Game Development
+trailer: https://youtu.be/LrvceEgWU7g
 screenshots:
   - /src/assets/02.jpg
   - /src/assets/03.jpg
