@@ -14,6 +14,7 @@ tags:
   - Pipeline
   - Performance
   - Technical Art
+heroImage: /src/assets/Blog/001/HeroImage.jpg
 author: Paulo Henrique
 ---
 Welcome to my blog. If you work in game development or are simply fascinated by the technical backstage of computer graphics, this space was designed for you. I decided to create this site to document my journey and share insights into one of the most dynamic and often misunderstood roles in the industry: the Technical Artist. In a landscape where creation tools are becoming increasingly accessible, I believe the true differentiator of a project lies exactly at the intersection of artistic vision and technical rigor.
