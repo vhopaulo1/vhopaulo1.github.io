@@ -11,11 +11,11 @@ export const workIcons = {
 
 export const work = [
   {
-    title: "Technical Artist",
+    title: "Lead Technical Artist",
     company: "Petit Fabrik",
     region: "Remote",
     description:
-      "Full-time role contributing to game development projects as a Technical Artist.",
+      "Leading technical art workflows for large-scale game projects, focusing on pipeline optimization, high-performance shader development, and establishing visual quality benchmarks while mentoring the art team.",
     technologies: [
       "Unreal Engine",
       "Blueprints",
@@ -34,7 +34,7 @@ export const work = [
     company: "DX Gameworks",
     region: "São Paulo, Brazil",
     description:
-      "Led technical art coordination within a hybrid work environment.",
+      "Coordinated technical art production across multiple departments, managing cross-functional teams to streamline asset integration, resolve rendering bottlenecks, and automate pipeline tasks for improved delivery speed.",
     technologies: [
       "Unreal Engine",
       "Blueprints",
@@ -51,7 +51,7 @@ export const work = [
     company: "DX Gameworks",
     region: "São Paulo, Brazil",
     description:
-      "Senior-level technical art contributions and pipeline support.",
+      "Architected advanced technical art solutions, including custom toolsets for DCC software and engine-side optimizations to maintain target frame rates without compromising visual fidelity.",
     technologies: [
       "Unreal Engine",
       "Blueprints",
@@ -66,7 +66,7 @@ export const work = [
     company: "Vulpe Arcana Studio",
     region: "São Paulo, Brazil",
     description:
-      "Part-time role focused on technical art implementation and support.",
+      "Executed technical implementation of art assets, focusing on material creation, performance profiling, and bridging the gap between creative vision and technical engine constraints.",
     technologies: [
       "Unreal Engine",
       "Blueprints",
@@ -81,7 +81,7 @@ export const work = [
     company: "Petit Fabrik",
     region: "São Paulo, Brazil",
     description:
-      "Full-time game development, bridging art and programming requirements.",
+      "Developed core gameplay mechanics and systems, utilizing a deep understanding of game logic and UI programming to deliver interactive and responsive user experiences.",
     technologies: [
       "Unreal Engine",
       "Blueprints",
@@ -97,7 +97,7 @@ export const work = [
     company: "Saga - School of Art, Game and Animation",
     region: "São Paulo, Brazil",
     description:
-      "Full-time academic management and coordination of school programs.",
+      "Directed academic operations and curriculum standards, overseeing instructor performance and ensuring the technical quality of the game design and animation programs.",
     technologies: [
       "Curriculum Development",
       "Team Leadership",
@@ -110,7 +110,7 @@ export const work = [
     company: "Saga - School of Art, Game and Animation",
     region: "São Paulo, Brazil",
     description:
-      "Taught courses focused on the game design industry and trained qualified professionals to create profitable games.",
+      "Trained industry-ready professionals in game design fundamentals, 3D modeling, and engine workflows, focusing on building commercially viable projects and technical proficiency.",
     technologies: [
       "Game Design",
       "Level Design",
