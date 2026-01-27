@@ -26,4 +26,10 @@ content:
       - { name: ctaText, label: CallToActionText, type: string }
       - { name: ctaLink, label: CallToActionLink, type: string }
       - { name: body, label: Body, type: rich-text }
-      - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true } }
+      - name: tags
+        label: Tags
+        type: select
+        options:
+          creatable: true
+          multiple: true
+          values: [ Tech, News, Sports ]
