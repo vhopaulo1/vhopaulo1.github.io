@@ -18,6 +18,18 @@ description: " Step into the suits of Ladybug and Cat Noir in their most daring
   and parkour agility collide as Shadow Moth unleashes a wave of villains across
   the city. It’s up to you and your friends to save Paris! "
 heroImage: /src/assets/portfolio/Miraculous/HeroImage.jpg
+tags:
+  - PetitFabrik
+  - Unreal Engine
+  - Game Development
+techStack:
+  - Unreal Engine 5
+  - Blueprint
+  - Shaders
+  - UMG
+  - Custom Tools
+  - Optimization
+  - Niagara
 trailer: https://youtu.be/aSbgFlEOV7o
 screenshots:
   - /src/assets/portfolio/Miraculous/01.png

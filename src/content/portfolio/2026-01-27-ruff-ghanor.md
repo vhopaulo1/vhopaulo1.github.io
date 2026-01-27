@@ -19,6 +19,10 @@ description: "Ruff Ghanor is a Deckbuilder game with Roguelite elements, where
   face your destiny. "
 heroImage: /src/assets/portfolio/Ruff/HeroImage.jpg
 trailer: https://youtu.be/x9VRQzOVNb8
+tags:
+  - PetitFabrik
+  - Unreal Engine
+  - Game Development
 screenshots:
   - /src/assets/portfolio/Ruff/01.png
   - /src/assets/portfolio/Ruff/02.png

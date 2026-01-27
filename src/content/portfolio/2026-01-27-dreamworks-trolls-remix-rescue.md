@@ -17,6 +17,17 @@ description: "Play as Poppy, Branch and more of your favorite DreamWorks Trolls
   harmony! "
 heroImage: /src/assets/portfolio/Trolls/HeroImage.jpg
 trailer: https://youtu.be/J9A0n7HFHbM
+techStack:
+  - Unreal Engine 5
+  - Blueprint
+  - Shaders
+  - UMG
+  - Custom Tools
+  - Optimization
+tags:
+  - PetitFabrik
+  - Unreal Engine
+  - Game Development
 screenshots:
   - /src/assets/portfolio/Trolls/01.jpg
   - /src/assets/portfolio/Trolls/02.jpg
