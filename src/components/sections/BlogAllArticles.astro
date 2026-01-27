@@ -11,9 +11,11 @@ const { posts = [], title = 'All Articles' } = Astro.props as Props;
 ---
 
 <section class="space-y-6">
-  <h2 class="text-3xl pl-4 font-bold tracking-tight">
-    <span class="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-dark)] bg-clip-text text-transparent">{title}</span>
-  </h2>
+  {posts.length > 0 && (
+    <h2 class="text-3xl pl-4 font-bold tracking-tight">
+      <span class="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-dark)] bg-clip-text text-transparent">{title}</span>
+    </h2>
+  )}
   <div class="grid grid-cols-1 gap-6">
     {posts.map((post) => (
       <PostCard post={post} />
