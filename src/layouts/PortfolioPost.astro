@@ -57,11 +57,11 @@ function getEmbedUrl(url: string) {
         >
             body.portfolio-background::before {
                 content: "";
-                position: fixed;
+                position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 100vh;
+                height: 100%;
                 background-image: var(--heroImageUrl);
                 background-size: cover;
                 background-position: center top;
@@ -112,8 +112,18 @@ function getEmbedUrl(url: string) {
             >
                 {/* Hero Image */}
                 {/* Media Gallery (Trailer + Screenshots) */}
-                <div class="w-full mb-10">
+                <div class="w-full mb-8">
                     <MediaGallery screenshots={screenshots} trailer={trailer} />
+                </div>
+
+                {/* Title Section - Centered and Highlighted */}
+                <div class="w-full mb-12 text-center">
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[var(--color-text-primary)] leading-tight"
+                        style="text-shadow: 0 0 40px rgba(var(--accent-rgb), 0.3), 0 0 80px rgba(var(--accent-rgb), 0.2);"
+                    >
+                        {title}
+                    </h1>
                 </div>
 
                 <div
@@ -121,14 +131,6 @@ function getEmbedUrl(url: string) {
                 >
                     {/* Sidebar Information */}
                     <aside class="space-y-8 h-fit lg:sticky lg:top-24">
-                        <div>
-                            <h4
-                                class="text-3xl md:text-4xl font-bold mb-4 text-[var(--color-text-primary)] leading-tight"
-                            >
-                                {title}
-                            </h4>
-                        </div>
-
                         {
                             company && (
                                 <div>
