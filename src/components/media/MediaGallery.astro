@@ -49,29 +49,18 @@ const hasMedia = items.length > 0;
 <media-gallery data-items={JSON.stringify(items)} class="block w-full not-prose">
   
   {/* Main Viewer */}
-  <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl mb-4 group">
+  <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.9)] mb-4 group">
     
     <div id="gallery-main-container" class="w-full h-full flex items-center justify-center">
         {/* Content injected via JS */}
     </div>
     
-    {/* Navigation Overlay (Optional, for prev/next on main image) */}
-    <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm" aria-label="Previous image">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm" aria-label="Next image">
-       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
   </div>
 
   {/* Thumbnail Strip */}
-  <div class="relative flex items-center gap-2">
+  <div class="relative flex items-center justify-center gap-2 max-w-full mx-auto">
     
-    <button id="thumb-prev" class="shrink-0 bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--color-text-primary)] p-2 rounded-lg border border-[var(--color-border)] transition-colors disabled:opacity-50" aria-label="Scroll thumbnails left">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-
-    <div id="thumbnails-track" class="flex gap-3 overflow-x-auto scroll-smooth hide-scrollbar px-1 py-1 w-full snap-x">
+    <div id="thumbnails-track" class="flex gap-3 overflow-x-auto scroll-smooth hide-scrollbar px-1 py-1 w-fit max-w-full snap-x">
       {items.map((item, index) => (
         <button 
           data-index={index}
@@ -89,10 +78,6 @@ const hasMedia = items.length > 0;
         </button>
       ))}
     </div>
-
-    <button id="thumb-next" class="shrink-0 bg-[var(--card-bg)] hover:bg-[var(--card-hover)] text-[var(--color-text-primary)] p-2 rounded-lg border border-[var(--color-border)] transition-colors disabled:opacity-50" aria-label="Scroll thumbnails right">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
   </div>
 
   {/* Fullscreen Modal */}
@@ -249,7 +234,23 @@ const hasMedia = items.length > 0;
           if (idx === index) {
             btn.classList.add('border-[var(--accent)]');
             btn.classList.remove('border-transparent', 'opacity-70');
-            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            
+            // Manual circular scroll to center active item without shifting page
+            if (this.thumbTrack) {
+                const trackRect = this.thumbTrack.getBoundingClientRect();
+                const btnRect = btn.getBoundingClientRect();
+                const btnCenter = btn.offsetLeft + (btn.offsetWidth / 2);
+                const trackCenter = this.thumbTrack.offsetWidth / 2;
+                
+                // Calculate position to center the button
+                // We use btn.offsetLeft which is relative to the scroll parent (thumbTrack)
+                const scrollPos = btnCenter - trackCenter;
+                
+                this.thumbTrack.scrollTo({
+                    left: scrollPos,
+                    behavior: 'smooth'
+                });
+            }
           } else {
             btn.classList.remove('border-[var(--accent)]');
             btn.classList.add('border-transparent', 'opacity-70');

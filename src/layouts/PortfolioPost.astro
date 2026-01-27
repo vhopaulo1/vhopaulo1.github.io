@@ -1,27 +1,41 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/sections/Header.astro';
-import Footer from '../components/sections/Footer.astro';
-import Button from '../components/ui/button/Button.astro';
-import MediaGallery from '../components/media/MediaGallery.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/sections/Header.astro";
+import Footer from "../components/sections/Footer.astro";
+import Button from "../components/ui/button/Button.astro";
+import MediaGallery from "../components/media/MediaGallery.astro";
 
-type Props = CollectionEntry<'portfolio'>['data'];
+type Props = CollectionEntry<"portfolio">["data"];
 
-const { title, description, heroImage, techStack, ctaLink, ctaText, company, whereToPlay, screenshots, trailer } = Astro.props;
+const {
+    title,
+    description,
+    heroImage,
+    techStack,
+    ctaLink,
+    ctaText,
+    company,
+    whereToPlay,
+    screenshots,
+    trailer,
+} = Astro.props;
 
 // Helper to get YouTube embed URL
 function getEmbedUrl(url: string) {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-  const match = url.match(regExp);
-  return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : url;
+    const regExp =
+        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11
+        ? `https://www.youtube.com/embed/${match[2]}`
+        : url;
 }
 ---
 
 <html lang="en" data-theme="light" class="light">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
+    <head>
+        <BaseHead title={title} description={description} />
+        <style>
             /* Custom styles if needed, but using Tailwind mostly */
             .sidebar-title {
                 font-size: 1.125rem; /* text-lg */
@@ -29,90 +43,130 @@ function getEmbedUrl(url: string) {
                 margin-bottom: 0.5rem;
                 display: block;
             }
-		</style>
-	</head>
+        </style>
+    </head>
 
-	<body>
-		<Header />
-		<main class="min-h-screen">
-			<article class="max-w-[1400px] mx-auto px-4 pt-0 pb-8 md:px-8">
-				
+    <body class="overflow-x-hidden">
+        {
+            heroImage && (
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[2500px] h-auto z-0 pointer-events-none select-none">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-bg)] z-10" />
+                    <img
+                        src={heroImage.src}
+                        alt=""
+                        class="w-full h-auto object-cover opacity-80 blur-sm object-top"
+                        style="mask-image: radial-gradient(ellipse 50% 60% at center 20%, black, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 50% 60% at center 20%, black, transparent 100%);"
+                    />
+                </div>
+            )
+        }
+        <Header />
+        <main class="min-h-screen relative">
+            <article
+                class="relative z-10 max-w-[1400px] mx-auto px-4 pt-8 pb-8 md:px-8"
+            >
                 {/* Hero Image */}
-				<div class="w-full mb-10">
-					{heroImage && (
-                        <div class="rounded-xl overflow-hidden shadow-xl">
-                            <img width={1280} height={720} src={heroImage.src} alt={title} class="w-full h-auto object-cover max-h-[600px]" />
-                        </div>
-                    )}
-				</div>
+                {/* Media Gallery (Trailer + Screenshots) */}
+                <div class="w-full mb-10">
+                    <MediaGallery screenshots={screenshots} trailer={trailer} />
+                </div>
 
-				<div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12">
-                    
+                <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12">
                     {/* Sidebar Information */}
                     <aside class="space-y-8 h-fit lg:sticky lg:top-24">
                         <div>
-							<h4 class="text-4xl font-bold mb-4 text-[var(--color-text-primary)] leading-tight">{title}</h4>
+                            <h4
+                                class="text-4xl font-bold mb-4 text-[var(--color-text-primary)] leading-tight"
+                            >
+                                {title}
+                            </h4>
                         </div>
 
-                        {company && (
-                            <div>
-                                <span class="sidebar-title text-[var(--color-text-primary)]">Company</span>
-                                <p class="text-[var(--color-text-secondary)]">{company}</p>
-                            </div>
-                        )}
-
-                        {whereToPlay && whereToPlay.length > 0 && (
-                            <div>
-                                <span class="sidebar-title text-[var(--color-text-primary)]">Where to play</span>
-                                <div class="flex flex-col gap-2 items-start">
-                                    {whereToPlay.map((item) => (
-                                        <a 
-                                            href={item.url} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            class="text-[var(--color-text-secondary)] hover:text-[var(--accent)] underline decoration-1 underline-offset-4 transition-colors uppercase text-sm tracking-wide font-medium"
-                                        >
-                                            {item.platform}
-                                        </a>
-                                    ))}
+                        {
+                            company && (
+                                <div>
+                                    <span class="sidebar-title text-[var(--color-text-primary)]">
+                                        Company
+                                    </span>
+                                    <p class="text-[var(--color-text-secondary)]">
+                                        {company}
+                                    </p>
                                 </div>
-                            </div>
-                        )}
+                            )
+                        }
 
-                        {techStack && techStack.length > 0 && (
-                             <div>
-                                <span class="sidebar-title text-[var(--color-text-primary)]">Technologies</span>
-                                <ul class="list-none space-y-2 p-0 m-0">
-                                    {techStack.map((tech) => (
-                                        <li class="text-[var(--color-text-primary)] opacity-80 text-sm">{tech}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+                        {
+                            whereToPlay && whereToPlay.length > 0 && (
+                                <div>
+                                    <span class="sidebar-title text-[var(--color-text-primary)]">
+                                        Where to play
+                                    </span>
+                                    <div class="flex flex-col gap-2 items-start">
+                                        {whereToPlay.map((item) => (
+                                            <a
+                                                href={item.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="text-[var(--color-text-secondary)] hover:text-[var(--accent)] underline decoration-1 underline-offset-4 transition-colors uppercase text-sm tracking-wide font-medium"
+                                            >
+                                                {item.platform}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                        }
 
-                        {ctaLink && (
-                             <div class="pt-4">
-                                <Button href={ctaLink} variant="primary" size="lg" className="w-full justify-center">{ctaText || "Visit Project"}</Button>
-                            </div>
-                        )}
+                        {
+                            techStack && techStack.length > 0 && (
+                                <div>
+                                    <span class="sidebar-title text-[var(--color-text-primary)]">
+                                        Technologies
+                                    </span>
+                                    <ul class="list-none space-y-2 p-0 m-0">
+                                        {techStack.map((tech) => (
+                                            <li class="text-[var(--color-text-primary)] opacity-80 text-sm">
+                                                {tech}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )
+                        }
+
+                        {
+                            ctaLink && (
+                                <div class="pt-4">
+                                    <Button
+                                        href={ctaLink}
+                                        variant="primary"
+                                        size="lg"
+                                        className="w-full justify-center"
+                                    >
+                                        {ctaText || "Visit Project"}
+                                    </Button>
+                                </div>
+                            )
+                        }
                     </aside>
 
                     {/* Main Content */}
-					<div class="prose prose-lg dark:prose-invert max-w-none text-[var(--color-text-secondary)]">
-                        <header class="mb-8 border-b border-[var(--color-border)] pb-8">
-                            <p class="text-xl leading-relaxed opacity-90">{description}</p>
+                    <div
+                        class="prose prose-lg dark:prose-invert max-w-none text-[var(--color-text-secondary)]"
+                    >
+                        <header
+                            class="mb-8 border-b border-[var(--color-border)] pb-8"
+                        >
+                            <p class="text-xl leading-relaxed opacity-90">
+                                {description}
+                            </p>
                         </header>
 
-						<slot />
-                        
-                        {/* Media Gallery (Trailer + Screenshots) */}
-                        <div class="mt-12">
-                            <MediaGallery screenshots={screenshots} trailer={trailer} />
-                        </div>
-					</div>
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+                        <slot />
+                    </div>
+                </div>
+            </article>
+        </main>
+        <Footer />
+    </body>
 </html>
