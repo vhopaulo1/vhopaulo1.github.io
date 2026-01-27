@@ -1,35 +1,45 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-import GlowLineSeparator from '@/components/ui/separator/GlowLineSeparator.astro';
-const pageTitle = 'About Me';
-const pageDescription = 'Learn more about my background and approach to technical art in games.';
+import Layout from "../layouts/BlogPost.astro";
+import GlowLineSeparator from "@/components/ui/separator/GlowLineSeparator.astro";
+const pageTitle = "About Me";
+const pageDescription =
+  "Learn more about my background and approach to technical art in games.";
 ---
 
-<Layout title={pageTitle} description={pageDescription} pubDate={new Date()} showHeader={false}>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  pubDate={new Date()}
+  showHeader={false}
+>
+  <h2>About Me</h2>
   <p>
-    Hey! I'm a senior technical artist and game developer who loves bridging the gap 
-    between art and code to ship products that feel immersive and run flawlessly.
+    Hey! I'm a senior technical artist and game developer who loves bridging the
+    gap between art and code to ship products that feel immersive and run
+    flawlessly.
   </p>
 
   <p>
-    I work primarily within Unreal Engine, leveraging C++, Python, and HLSL/Shaders. 
-    I care deeply about performance optimization, scalable technical art pipelines, 
-    and tool development that empowers artists. My approach: build robust systems, 
-    automate the repetitive, and optimize until every frame counts.
+    I work primarily within Unreal Engine, leveraging C++, Python, and
+    HLSL/Shaders. I care deeply about performance optimization, scalable
+    technical art pipelines, and tool development that empowers artists. My
+    approach: build robust systems, automate the repetitive, and optimize until
+    every frame counts.
   </p>
 
- <p>
-    Recent highlights include developing custom shaders and VFX systems, architecting 
-    automated asset management tools, and optimizing graphics by implementing rendering 
-    pipeline best practices to achieve stable frame rates without sacrificing visual fidelity.
- </p>
+  <p>
+    Recent highlights include developing custom shaders and VFX systems,
+    architecting automated asset management tools, and optimizing graphics by
+    implementing rendering pipeline best practices to achieve stable frame rates
+    without sacrificing visual fidelity.
+  </p>
 
   <p>
-    Outside of core development, I enjoy mentoring new talent, documenting complex workflows, 
-    and building modular game systems that make development teams faster. Always learning and 
-    always happy to collaborate on meaningful creative challenges.
+    Outside of core development, I enjoy mentoring new talent, documenting
+    complex workflows, and building modular game systems that make development
+    teams faster. Always learning and always happy to collaborate on meaningful
+    creative challenges.
   </p>
 
   <GlowLineSeparator />
-
 </Layout>
