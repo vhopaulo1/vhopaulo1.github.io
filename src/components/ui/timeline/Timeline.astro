@@ -56,7 +56,7 @@ const { items, centered = true } = props;
             isLeft ? 'justify-start' : 'justify-end',
           ]}>
             <!-- Dot on the center line -->
-            <div class="absolute left-1/2 -translate-x-1/2 top-4 size-3 rounded-full bg-[var(--accent)] ring-4 ring-[color:var(--background)]"></div>
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-3 rounded-full bg-[var(--accent)] ring-4 ring-[color:var(--background)]"></div>
 
             <div class:list={[
               'w-full md:w-1/2',
@@ -101,7 +101,7 @@ const { items, centered = true } = props;
     <div class="space-y-8 md:space-y-12">
       {items.map((item) => (
         <div class="relative pl-5 md:pl-16">
-          <div class="absolute left-0 md:left-5 top-3 md:top-4 size-2 md:size-3 rounded-full bg-[var(--accent)] ring-2 md:ring-4 ring-[color:var(--background)]"></div>
+          <div class="absolute left-0 md:left-5 top-1/2 -translate-y-1/2 -translate-x-1/2 size-2 md:size-3 rounded-full bg-[var(--accent)] ring-2 md:ring-4 ring-[color:var(--background)]"></div>
           <div class="card-surface p-4 md:p-6 w-full min-w-0">
             <div class="mb-2 space-y-1">
               <h3 class="text-xs leading-snug font-semibold m-0 flex items-center gap-2">

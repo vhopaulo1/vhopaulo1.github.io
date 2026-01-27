@@ -5,6 +5,7 @@ import Header from '../../components/sections/Header.astro';
 import Footer from '../../components/sections/Footer.astro';
 import HeroSection from '../../components/sections/HeroSection.astro';
 import Button from '../../components/ui/button/Button.astro';
+import Badge from '../../components/ui/badge/Badge.astro';
 
 const projects = (await getCollection('portfolio')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -32,7 +33,11 @@ const projects = (await getCollection('portfolio')).sort(
                             <div class="absolute right-4 top-4 text-[var(--accent)] [&>svg]:w-6 [&>svg]:h-6" set:html={project.data.icon} />
                         )}
                         <h3 class="text-xl font-semibold text-[color:var(--color-text-primary)] m-0">{project.data.title}</h3>
-                        <p class="text-sm text-[color:var(--color-text-muted)] m-0 mb-2">{project.data.techStack}</p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            {project.data.techStack?.map((tech) => (
+                                <Badge variant="outline" size="sm">{tech}</Badge>
+                            ))}
+                        </div>
                         <p class="text-[color:var(--color-text-secondary)] flex-grow text-sm">{project.data.description}</p>
                         <div class="mt-4 flex justify-center gap-4 relative z-10">
                              {/* z-10 needed because of stretched-link */}
