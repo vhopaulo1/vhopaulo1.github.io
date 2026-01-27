@@ -14,40 +14,45 @@ description: Travel through secret worlds within the massive Kukoo tree to find
   team up with up to three friends to enjoy a four-player adventure unlike
   anything you've seen before!
 heroImage: ../../assets/portfolio/Kukoos/Kukoos_HeroImage.png
-techStack: 
-  - "Unreal Engine 4"
-  - "Blueprint"
-  - "Animation Blueprint"
-  - "Shaders"
-  - "UMG"
-ctaText: Play on Steam
-ctaLink: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
+techStack: Unreal Engine 4, Blueprint, Animation Blueprint, Shaders, UMG
 tags:
   - PetitFabrik
   - Unreal Engine
   - Game Development
+screenshots:
+  - /src/assets/02.jpg
+  - /src/assets/03.jpg
+  - /src/assets/01.jpg
+  - /src/assets/04.jpg
 ---
-I worked as a developer on the game Kukoos: Lost Pets, a 3D platformer where players control Kukoos to find their lost pets. The game can be played solo or with up to three friends in co-op.
+## I worked as a developer on the game Kukoos: Lost Pets, a 3D platformer where players control Kukoos to find their lost pets. The game can be played solo or with up to three friends in co-op.
 
-Responsibilities:
+**Responsibilities:**
 
-\- Implementation of game mechanics, such as player movement, item collection, and puzzle solving.  
-\- Development of 3D levels and environments using Unreal Engine.  
-\- Creation of visual effects (VFX).  
-\- Creation and application of materials.  
-\- Configuration of post-processing and lighting.  
-\- Development of shaders.  
-\- Development of custom tools for the workflow.  
-\- Implementation of user interface (UI).  
-\- Implementation of "juiciness" effects (visual and audio feedback for player actions).  
-\- Implementation of puzzles.  
-\- Implementation of animations.  
-\- Optimization of game performance for different platforms.  
-\- Debugging and bug fixing.  
-\- Collaboration with other team members to ensure project quality and schedule.
-
-Technologies Used:
-
-\- Unreal Engine  
-\- C++ and Blueprints  
-\- Blender
+*   Implementation of game mechanics, such as player movement, item collection, and puzzle solving.
+    
+*   Development of 3D levels and environments using Unreal Engine.
+    
+*   Creation of visual effects (VFX).
+    
+*   Creation and application of materials.
+    
+*   Configuration of post-processing and lighting.
+    
+*   Development of shaders.
+    
+*   Development of custom tools for the workflow.
+    
+*   Implementation of user interface (UI).
+    
+*   Implementation of "juiciness" effects (visual and audio feedback for player actions).
+    
+*   Implementation of puzzles.
+    
+*   Implementation of animations.
+    
+*   Optimization of game performance for different platforms.
+    
+*   Debugging and bug fixing.
+    
+*   Collaboration with other team members to ensure project quality and schedule.
