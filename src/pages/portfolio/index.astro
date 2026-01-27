@@ -10,6 +10,12 @@ import Badge from "../../components/ui/badge/Badge.astro";
 const projects = (await getCollection("portfolio")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const getSlug = (title: string) =>
+  title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 ---
 
 <html lang="en" data-theme="light" class="light">
@@ -24,8 +30,8 @@ const projects = (await getCollection("portfolio")).sort(
         subtitle="A collection of titles and interactive experiences I helped bring to life."
       />
 
-      <section class="w-full py-10">
-        <div class="w-full mx-auto px-4">
+      <section class="w-full py-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
           <div
             class={`grid ${
               projects.length === 1
@@ -33,11 +39,11 @@ const projects = (await getCollection("portfolio")).sort(
                 : projects.length === 2
                   ? "grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto"
                   : "grid-cols-1 md:grid-cols-3"
-            } gap-6`}
+            } gap-4 md:gap-6`}
           >
             {
               projects.map((project) => (
-                <article class="card-surface p-4 flex flex-col gap-3 relative h-full">
+                <article class="card-surface p-5 flex flex-col gap-3 relative h-full">
                   {project.data.heroImage && (
                     <img
                       width={640}
@@ -66,10 +72,10 @@ const projects = (await getCollection("portfolio")).sort(
                   <p class="text-[color:var(--color-text-secondary)] flex-grow text-sm">
                     {project.data.description}
                   </p>
-                  <div class="mt-4 flex justify-center gap-4 relative z-10">
+                  <div class="mt-4 flex flex-col sm:flex-row justify-center gap-3 relative z-10">
                     {/* z-10 needed because of stretched-link */}
                     <Button
-                      href={`/portfolio/${project.id}/`}
+                      href={`/portfolio/${getSlug(project.data.title)}/`}
                       variant="secondary"
                       size="sm"
                     >
@@ -86,7 +92,7 @@ const projects = (await getCollection("portfolio")).sort(
                     )}
                   </div>
                   <a
-                    href={`/portfolio/${project.id}/`}
+                    href={`/portfolio/${getSlug(project.data.title)}/`}
                     class="stretched-link"
                     aria-label={project.data.title}
                   />
