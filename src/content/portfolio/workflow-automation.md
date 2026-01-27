@@ -2,6 +2,7 @@
 title: "Workflow Automation Orchestrator (n8n)"
 description: "Event‑driven workflows for data sync, notifications, and back‑office automation. Custom nodes, secrets management, retries, and metrics."
 pubDate: 2024-01-01
+heroImage: "../../assets/images/example-blog-hero1.jpg"
 techStack: "n8n • Node.js • TypeScript • PostgreSQL"
 ctaText: "View Repo →"
 ctaLink: "#"

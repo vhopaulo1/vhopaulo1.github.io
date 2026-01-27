@@ -24,21 +24,24 @@ const projects = (await getCollection('portfolio')).sort(
                 <div class="mx-auto max-w-6xl px-4">
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projects.map((project) => (
-                      <article class="card-surface p-6 relative flex flex-col h-full">
-                        {project.data.icon && (
+                      <article class="card-surface p-4 flex flex-col gap-3 relative h-full">
+                        {project.data.heroImage && (
+                            <img width={640} height={360} src={project.data.heroImage.src} alt={project.data.title} class="rounded-lg object-cover w-full h-auto aspect-video mb-2" />
+                        )}
+                        {project.data.icon && !project.data.heroImage && (
                             <div class="absolute right-4 top-4 text-[var(--accent)] [&>svg]:w-6 [&>svg]:h-6" set:html={project.data.icon} />
                         )}
-                        <a href={`/portfolio/${project.id}/`} class="no-underline hover:text-[var(--accent)] transition-colors">
-                            <h3 class="text-xl font-semibold text-foreground m-0 mb-2">{project.data.title}</h3>
-                        </a>
-                        <p class="text-sm text-[color:var(--color-text-muted)] m-0 mb-3">{project.data.techStack}</p>
-                        <p class="text-[color:var(--color-text-secondary)] flex-grow">{project.data.description}</p>
-                        <div class="mt-6 flex justify-center gap-4">
+                        <h3 class="text-xl font-semibold text-[color:var(--color-text-primary)] m-0">{project.data.title}</h3>
+                        <p class="text-sm text-[color:var(--color-text-muted)] m-0 mb-2">{project.data.techStack}</p>
+                        <p class="text-[color:var(--color-text-secondary)] flex-grow text-sm">{project.data.description}</p>
+                        <div class="mt-4 flex justify-center gap-4 relative z-10">
+                             {/* z-10 needed because of stretched-link */}
                             <Button href={`/portfolio/${project.id}/`} variant="secondary" size="sm">Details</Button>
                             {project.data.ctaLink && (
                                 <Button href={project.data.ctaLink} variant="primary" size="sm">{project.data.ctaText || 'Visit'}</Button>
                             )}
                         </div>
+                        <a href={`/portfolio/${project.id}/`} class="stretched-link" aria-label={project.data.title}></a>
                       </article>
                     ))}
                   </div>
