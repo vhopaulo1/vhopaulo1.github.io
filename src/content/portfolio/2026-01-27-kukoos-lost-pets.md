@@ -1,5 +1,6 @@
 ---
 title: Kukoos Lost Pets
+company: Petit Fabrik
 whereToPlay:
   - platform: Steam
     url: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
