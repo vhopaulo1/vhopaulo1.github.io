@@ -9,7 +9,7 @@ content:
       - { name: pubDate, label: Publish Date, type: date }
       - { name: description, label: Description, type: string, option: { maxlength: 160 } }
       - { name: category, label: Category, type: string }
-      - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true }
+      - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true } }
       - { name: heroImage, label: Image, type: image }
       - { name: author, label: Author, type: string }
       - { name: body, label: Body, type: rich-text }
@@ -26,4 +26,4 @@ content:
       - { name: ctaText, label: CallToActionText, type: string }
       - { name: ctaLink, label: CallToActionLink, type: string }
       - { name: body, label: Body, type: rich-text }
-      - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true }
+      - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true } }
