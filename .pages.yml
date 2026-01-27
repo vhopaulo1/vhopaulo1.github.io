@@ -12,7 +12,7 @@ content:
       - { name: category, label: Category, type: string }
       - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true }
       - { name: heroImage, label: Image, type: image }
-      - { name: authorm, label: Author, type: string }
+      - { name: author, label: Author, type: string, default: "Paulo Henrique" }
       - { name: body, label: Body, type: rich-text }
       - { name: published, label: Published, type: boolean, default: false}
     view:

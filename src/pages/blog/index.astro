@@ -24,7 +24,7 @@ if (featured) {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark" class="dark">
+<html lang="en" data-theme="light" class="light">
 	<head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     {totalPages > 1 && (
@@ -33,7 +33,7 @@ if (featured) {
 	</head>
 	<body>
         <Header />
-        <BlogHero title="Blog" subtitle="Practical insights on data analysis, visualization, and getting more from your analytics tools." />
+        <BlogHero title="Blog" subtitle="Technical notes on game development and the art of optimization. This is where I document rendering best practices, shader experiments, and the challenges of bridging the gap between high-fidelity visuals and peak performance." />
         <main class="use-utility-layout mx-auto max-w-5xl px-3 py-5 space-y-7">
             {featured && (
               <section class="card-surface p-4 md:p-5 hover-lift sw-featured-card">
