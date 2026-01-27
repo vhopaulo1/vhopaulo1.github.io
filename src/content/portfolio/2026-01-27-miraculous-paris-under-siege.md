@@ -18,10 +18,6 @@ description: " Step into the suits of Ladybug and Cat Noir in their most daring
   and parkour agility collide as Shadow Moth unleashes a wave of villains across
   the city. It’s up to you and your friends to save Paris! "
 heroImage: /src/assets/portfolio/Miraculous/HeroImage.jpg
-tags:
-  - PetitFabrik
-  - Unreal Engine
-  - Game Development
 techStack:
   - Unreal Engine 5
   - Blueprint
@@ -30,6 +26,10 @@ techStack:
   - Custom Tools
   - Optimization
   - Niagara
+tags:
+  - PetitFabrik
+  - Unreal Engine
+  - Game Development
 trailer: https://youtu.be/aSbgFlEOV7o
 screenshots:
   - /src/assets/portfolio/Miraculous/01.png
@@ -42,13 +42,22 @@ screenshots:
 
 **Responsibilities:**
 
-\- Creation of visual effects (VFX).  
-\- Creation and application of materials.  
-\- Configuration of post-processing and lighting.  
-\- Development of shaders.  
-\- Development of custom tools for the workflow.  
-\- Implementation of "juiciness" effects (visual and audio feedback for player actions).  
-\- Implementation of animations.  
-\- Optimization of game performance for different platforms.  
-\- Debugging and bug fixing.  
-\- Collaboration with other team members to ensure project quality and schedule.
+*   Creation of visual effects (VFX).
+    
+*   Creation and application of materials.
+    
+*   Configuration of post-processing and lighting.
+    
+*   Development of shaders.
+    
+*   Development of custom tools for the workflow.
+    
+*   Implementation of "juiciness" effects (visual and audio feedback for player actions).
+    
+*   Implementation of animations.
+    
+*   Optimization of game performance for different platforms.
+    
+*   Debugging and bug fixing.
+    
+*   Collaboration with other team members to ensure project quality and schedule.
