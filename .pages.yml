@@ -28,7 +28,8 @@ content:
       - { name: company, label: Company, type: string }
       - name: whereToPlay
         label: "Onde Jogar"
-        type: select
+        type: object
+        list: true
         fields:
           - name: platform
             label: "Plataforma"
