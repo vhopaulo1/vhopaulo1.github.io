@@ -12,5 +12,14 @@ content:
       - { name: category, label: Category, type: string }
       - { name: tags, label: Tags, type: select, option: { multiple: true, creatable: true }
       - { name: heroImage, label: Image, type: image }
-      - { name: authorAuthor, type: string }
+      - { name: authorm, label: Author, type: string }
       - { name: body, label: Body, type: rich-text }
+      - { name: published, label: Published, type: boolean, default: false}
+    view:
+      fields: [ title ]
+      primary: title
+      sort: [ date, title ]
+      default:
+        search: ''
+        sort: title
+        order: desc
