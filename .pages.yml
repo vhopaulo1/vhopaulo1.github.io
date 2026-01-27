@@ -27,59 +27,15 @@ content:
       - { name: title, label: Title, type: string }
       - { name: company, label: Company, type: string }
       - name: whereToPlay
-        label: Where to play
-        type: object
+        label: "Onde Jogar"
+        type: select
         fields:
-          - name: platform1
-            label: Platform1
-            type: object
-            fields:
-              - name: platform
-                label: Platform
-                type: string
-              - name: url
-                label: Link
-                type: string
-          - name: platform2
-            label: Platform2
-            type: object
-            fields:
-              - name: platform
-                label: Platform
-                type: string
-              - name: url
-                label: Link
-                type: string
-          - name: platform3
-            label: Platform3
-            type: object
-            fields:
-              - name: platform
-                label: Platform
-                type: string
-              - name: url
-                label: Link
-                type: string
-          - name: platform4
-            label: Platform4
-            type: object
-            fields:
-              - name: platform
-                label: Platform
-                type: string
-              - name: url
-                label: Link
-                type: string
-          - name: platform5
-            label: Platform5
-            type: object
-            fields:
-              - name: platform
-                label: Platform
-                type: string
-              - name: url
-                label: Link
-                type: string
+          - name: platform
+            label: "Plataforma"
+            type: string
+          - name: url
+            label: "Link da Loja"
+            type: string
       - { name: pubDate, label: Publish Date, type: date }
       - { name: description, label: Description, type: string, option: { maxlength: 160 } }
       - { name: heroImage, label: Image, type: image }
