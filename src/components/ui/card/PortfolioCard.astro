@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Badge from "../badge/Badge.astro";
+import Button from "../button/Button.astro";
+import FormattedDate from "../../FormattedDate.astro";
+
+interface Props {
+    project: CollectionEntry<"portfolio">;
+}
+
+const { project } = Astro.props;
+
+const getSlug = (title: string) =>
+    title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+
+const slug = getSlug(project.data.title);
+---
+
+<article
+    class="card-surface p-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-5 md:gap-6 items-stretch relative"
+>
+    {
+        project.data.heroImage && (
+            <div class="md:col-span-1 relative overflow-hidden rounded-lg">
+                <Image
+                    class="w-full h-full object-cover rounded-lg"
+                    width={640}
+                    height={360}
+                    src={project.data.heroImage}
+                    alt={project.data.title}
+                />
+            </div>
+        )
+    }
+    {
+        project.data.icon && !project.data.heroImage && (
+            <div class="md:col-span-1 flex items-center justify-center bg-[var(--surface-sunken)] rounded-lg min-h-[200px]">
+                <div
+                    class="text-[var(--accent)] [&>svg]:w-16 [&>svg]:h-16"
+                    set:html={project.data.icon}
+                />
+            </div>
+        )
+    }
+
+    <div class="md:col-span-1 flex flex-col justify-between space-y-2">
+        <div>
+            <h3
+                class="text-2xl font-bold text-[color:var(--color-text-primary)] !mb-0 leading-tight"
+            >
+                {project.data.title}
+            </h3>
+
+            <div
+                class="flex items-center gap-3 text-sm text-[color:var(--color-text-muted)] mt-2 mb-2"
+            >
+                <span>Published on:</span>
+                <FormattedDate date={project.data.pubDate} />
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-3">
+                {
+                    project.data.techStack?.map((tech) => (
+                        <Badge variant="outline" size="sm">
+                            {tech}
+                        </Badge>
+                    ))
+                }
+            </div>
+
+            <p class="text-[color:var(--color-text-secondary)] line-clamp-3">
+                {project.data.description}
+            </p>
+        </div>
+
+        <div class="mt-4 flex flex-col sm:flex-row gap-3 relative z-10">
+            <Button href={`/portfolio/${slug}/`} variant="secondary" size="sm">
+                Details
+            </Button>
+            {
+                project.data.ctaLink && (
+                    <Button
+                        href={project.data.ctaLink}
+                        variant="primary"
+                        size="sm"
+                    >
+                        {project.data.ctaText || "Visit"}
+                    </Button>
+                )
+            }
+        </div>
+    </div>
+    <a
+        href={`/portfolio/${slug}/`}
+        class="stretched-link"
+        aria-label={project.data.title}></a>
+</article>
