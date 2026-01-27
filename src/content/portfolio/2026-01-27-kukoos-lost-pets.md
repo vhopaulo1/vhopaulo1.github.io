@@ -5,7 +5,9 @@ whereToPlay:
   - platform: Steam
     url: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
   - platform: Playstation
-    url: https://store.steampowered.com/app/1468250/Kukoos_Lost_Pets/
+    url: https://store.playstation.com/pt-br/concept/10006108/
+  - platform: Nintendo
+    url: https://www.nintendo.com/pt-br/store/products/kukoos-lost-pets-switch/
 pubDate: 2021-12-15
 description: Travel through secret worlds within the massive Kukoo tree to find
   your friends and end the pet rebellion! This charming 3D platformer takes you
