@@ -13,21 +13,7 @@ tags:
 heroImage: /src/assets/Blog/001/HeroImage.jpg
 author: Paulo Henrique
 ---
-\## Topics
-
-1\. \[\[#Introduction\]\]
-
-2\. \[\[#Definition\]\]
-
-3\. \[\[#Areas of expertise\]\]
-
-4\. \[\[#Necessary skills\]\]
-
-5\. \[\[#The path to becoming a technical artist\]\]
-
-6\. \[\[#Extra material\]\]
-
-\## Introduction
+# Introduction
 
 Anyone who works in or studies game development knows that the theory of the "perfect Game Design Document" rarely survives the first day of production. We know that making a game is not just a linear sum of art, code, and design. It is a chaotic ecosystem where creative vision is in constant war with hardware limitations.
 
@@ -37,7 +23,7 @@ The Artist wants the character to have 50,000 polygons and 4K textures on every 
 
 It is in this vacuum that one of the most vital and least understood figures in the industry emerges: the **Technical Artist**.
 
-\## Definition
+# Definition
 
 Defining a Technical Artist (TA) merely as "someone who knows art and programming" is a gross simplification. The TA is, essentially, the guardian of the _pipeline_.
 
@@ -45,7 +31,7 @@ Think of the TA as a diplomat armed with deep technical knowledge. They understa
 
 If game production were a highway, the Technical Artist would be the traffic engineer who ensures that cars (assets) can travel at maximum speed without causing traffic jams or accidents, regardless of how many vehicles the art department decides to put on the track.
 
-\## Areas of expertise
+# Areas of expertise
 
 To visualize where the TA operates, let's forget the lists and follow the life cycle of a complex asset, say, a final "Boss" with tentacles and translucent skin.
 
@@ -59,7 +45,7 @@ Now the Boss is in the scene, but it needs to look "slimy." The engine's default
 
 Finally, the game starts to run slowly. The frame rate drops. The Gameplay Programmer is busy with AI and the Artist doesn't know what to cut. The TA puts on their **Optimization and Performance** hat. They open the engine's profiler, analyze draw calls, VRAM usage, and rendering cost per pixel. They find the bottleneck and apply a surgical solution, whether by creating LODs (Level of Detail), adjusting culling, or rewriting the shader to be lighter.
 
-\## Necessary skills
+# Necessary skills
 
 To navigate these rough seas, the Technical Artist's toolkit needs to be vast. They aren't expected to be the best modeler in the world, nor the best software engineer, but they must be fluent in both languages.
 
@@ -71,7 +57,7 @@ Beyond code, there is the **Artistic Eye**. The TA needs to look at an image and
 
 And perhaps the most important of all: **Troubleshooting**. The TA is the project's firefighter. When the build breaks, when a texture flickers, or a shadow disappears, everyone looks to the TA. The ability to diagnose obscure errors and investigate technical documentation is what keeps production alive.
 
-\## The path to becoming a Technical Artist
+# The path to becoming a Technical Artist
 
 There is no paved road to becoming a TA. It is a path for the "restless."
 
@@ -81,18 +67,18 @@ The second is the **Creative Engineer**: the programmer who felt limited by invi
 
 If you are already in the field and find yourself frequently thinking "how can I make this faster?" or "why is this light reacting like this?", you are already walking the path. The market is hungry for professionals who can move between the logical and creative hemispheres of development. Being a Technical Artist is, in the end, being the facilitator who allows the magic to happen on screen, ensuring that technology serves art, and not the other way around.
 
-\## Extra material
+# Extra material
 
-\- \[Applying for a Technical Artist Job // Skills, Offers, CV\]([https://youtu.be/KPbgNX75E0w](https://youtu.be/KPbgNX75E0w))
-
-\- \[So You Wanna Make Games?? | Episode 5: Technical Art\]([https://www.youtube.com/watch?v=kr7XYXMM7-U](https://www.youtube.com/watch?v=kr7XYXMM7-U))
-
-\- \[Mastering Shader Programming & Technical Art with Harry | The Generalists Podcast\]([https://www.youtube.com/watch?v=PhlS-phZ1oE](https://www.youtube.com/watch?v=PhlS-phZ1oE))
-
-\- \[Nature of Code - By Daniel Shiffman\]([https://natureofcode.com/](https://natureofcode.com/))
-
-\- \[The Book of Shaders\]([https://thebookofshaders.com/](https://thebookofshaders.com/))
-
-\- \[Online Free Book: Game Math\]([https://gamemath.com/book/intro.html](https://gamemath.com/book/intro.html))
-
-\- \[Online Free Book: Game Engine Architecture\]([https://www.gameenginebook.com/toc.html](https://www.gameenginebook.com/toc.html))
+*   [Applying for a Technical Artist Job // Skills, Offers, CV](https://youtu.be/KPbgNX75E0w)
+    
+*   [So You Wanna Make Games?? | Episode 5: Technical Art](https://www.youtube.com/watch?v=kr7XYXMM7-U)
+    
+*   [Mastering Shader Programming & Technical Art with Harry | The Generalists Podcast](https://www.youtube.com/watch?v=PhlS-phZ1oE)
+    
+*   [Nature of Code - By Daniel Shiffman](https://natureofcode.com/)
+    
+*   [The Book of Shaders](https://thebookofshaders.com/)
+    
+*   [Online Free Book: Game Math](https://gamemath.com/book/intro.html)
+    
+*   [Online Free Book: Game Engine Architecture](https://www.gameenginebook.com/toc.html)
