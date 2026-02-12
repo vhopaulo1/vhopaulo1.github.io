@@ -17,7 +17,7 @@ description: " Step into the suits of Ladybug and Cat Noir in their most daring
   adventure yet! Embark on a thrilling adventure where heroism, acrobatic combat
   and parkour agility collide as Shadow Moth unleashes a wave of villains across
   the city. It’s up to you and your friends to save Paris! "
-heroImage: /src/assets/portfolio/Miraculous/HeroImage.jpg
+heroImage: ../../assets/portfolio/Miraculous/HeroImage.jpg
 techStack:
   - Unreal Engine 5
   - Blueprint
@@ -32,11 +32,11 @@ tags:
   - Game Development
 trailer: https://youtu.be/aSbgFlEOV7o
 screenshots:
-  - /src/assets/portfolio/Miraculous/01.png
-  - /src/assets/portfolio/Miraculous/02.jpg
-  - /src/assets/portfolio/Miraculous/03.png
-  - /src/assets/portfolio/Miraculous/04.jpg
-  - /src/assets/portfolio/Miraculous/05.jpg
+  - ../../assets/portfolio/Miraculous/01.png
+  - ../../assets/portfolio/Miraculous/02.jpg
+  - ../../assets/portfolio/Miraculous/03.png
+  - ../../assets/portfolio/Miraculous/04.jpg
+  - ../../assets/portfolio/Miraculous/05.jpg
 ---
 ### In my role as Senior Technical Artist, I provided essential support to the team by identifying, troubleshooting, and resolving a variety of technical issues, ranging from shader complexities and performance bottlenecks to animation integration problems and pipeline inefficiencies. These issues were significantly impacting the project's overall quality and timeline, and my contributions were crucial in ensuring its successful and on-time delivery.
 

@@ -16,7 +16,7 @@ description: "Bring iconic Nickelodeon heroes into a world of fantasy and
   adventure with SpongeBob, Katara, Leonardo, and others. Featuring epic
   battles, dynamic environments, it's an engaging gameplay experience for
   players of all ages. "
-heroImage: /src/assets/portfolio/Dice/HeroImage.jpg
+heroImage: ../../assets/portfolio/Dice/HeroImage.jpg
 techStack:
   - Unreal Engine 5
   - Blueprint
@@ -32,10 +32,10 @@ tags:
   - Game Development
 trailer: https://youtu.be/F4ihj-0CB24
 screenshots:
-  - /src/assets/portfolio/Dice/01.jpg
-  - /src/assets/portfolio/Dice/02.jpg
-  - /src/assets/portfolio/Dice/03.jpg
-  - /src/assets/portfolio/Dice/04.jpg
+  - ../../assets/portfolio/Dice/01.jpg
+  - ../../assets/portfolio/Dice/02.jpg
+  - ../../assets/portfolio/Dice/03.jpg
+  - ../../assets/portfolio/Dice/04.jpg
 ---
 ### As Lead Technical Artist on **Nicktoons & The Dice of Destiny**, an action RPG featuring iconic Nickelodeon characters in a fantasy setting, I led the bridge between art and programming to ensure the technical viability of the creative vision. Beyond resolving production bottlenecks and ensuring that dynamic combat and detailed environments performed stably across all platforms, I was primarily responsible for the project's visual stylization, defining the technical processes that established the title's unique aesthetic. My role was pivotal in elevating the overall visual polish, implementing solutions that optimized the workflow and ensured the delivery of a high-fidelity product within the established timeline.
 
