@@ -5,7 +5,7 @@ import Header from '../../../components/sections/Header.astro';
 import Footer from '../../../components/sections/Footer.astro';
 import PostCard from '../../../components/ui/card/PostCard.astro';
 import { slugifyTag } from '../../../lib/slug';
-import { getTagMeta } from '../../../data/tags';
+import { getTagMeta } from '../../../data/en/tags';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');

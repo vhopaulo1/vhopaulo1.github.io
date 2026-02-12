@@ -13,7 +13,7 @@ export const work = [
   {
     title: "Lead Technical Artist",
     company: "Petit Fabrik",
-    region: "Remoto",
+    region: "São Paulo, Brasil",
     description:
       "Liderando fluxos de trabalho de technical art para projetos de jogos de grande escala, focando na otimização de pipeline, desenvolvimento de shaders de alta performance e estabelecimento de benchmarks de qualidade visual enquanto mentoro a equipe de arte.",
     technologies: [
