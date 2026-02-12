@@ -16,7 +16,7 @@ description: Travel through secret worlds within the massive Kukoo tree to find
   bosses, find hidden collectibles, and solve ancient puzzles. Journey solo or
   team up with up to three friends to enjoy a four-player adventure unlike
   anything you've seen before!
-heroImage: ../../assets/portfolio/Kukoos/Kukoos_HeroImage.png
+heroImage: ../../../assets/portfolio/Kukoos/Kukoos_HeroImage.png
 techStack:
   - Unreal Engine 4
   - Blueprint
@@ -31,10 +31,10 @@ tags:
   - Game Development
 trailer: https://youtu.be/LrvceEgWU7g
 screenshots:
-  - ../../assets/portfolio/Kukoos/01.jpg
-  - ../../assets/portfolio/Kukoos/02.jpg
-  - ../../assets/portfolio/Kukoos/03.jpg
-  - ../../assets/portfolio/Kukoos/04.jpg
+  - ../../../assets/portfolio/Kukoos/01.jpg
+  - ../../../assets/portfolio/Kukoos/02.jpg
+  - ../../../assets/portfolio/Kukoos/03.jpg
+  - ../../../assets/portfolio/Kukoos/04.jpg
 ---
 ## I worked as a developer on the game Kukoos: Lost Pets, a 3D platformer where players control Kukoos to find their lost pets. The game can be played solo or with up to three friends in co-op.
 

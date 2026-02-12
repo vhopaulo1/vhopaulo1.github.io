@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
-import PortfolioPostPage from '../../components/pages/PortfolioPostPage.astro';
+import PortfolioPostPage from '../../../components/pages/PortfolioPostPage.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('portfolio');
-    const enPosts = posts.filter(p => p.id.startsWith('en/'));
-	return enPosts.map((post) => ({
+    const ptPosts = posts.filter(p => p.id.startsWith('pt-br/'));
+	return ptPosts.map((post) => ({
 		params: {
+            lang: 'pt-br',
 			slug: post.data.title
 				.toLowerCase()
 				.replace(/[^a-z0-9]+/g, "-")
@@ -19,4 +20,4 @@ export async function getStaticPaths() {
 const post = Astro.props;
 ---
 
-<PortfolioPostPage post={post} lang="en" />
+<PortfolioPostPage post={post} lang="pt-br" />

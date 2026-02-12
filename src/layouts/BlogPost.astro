@@ -16,6 +16,7 @@ type Props = BlogData & {
 	prevPost?: { id: string; title: string } | null;
 	nextPost?: { id: string; title: string } | null;
 	readingTimeMin?: number;
+    lang?: 'en' | 'pt-br';
 };
 
 const {
@@ -28,10 +29,16 @@ const {
 	prevPost = null,
 	nextPost = null,
 	readingTimeMin = 0,
+    lang = 'en',
 } = Astro.props as Props;
+
+const t = {
+    en: { publishedOn: 'Published on', lastUpdatedOn: 'Last updated on' },
+    'pt-br': { publishedOn: 'Publicado em', lastUpdatedOn: 'Atualizado em' },
+}[lang];
 ---
 
-<html lang="en" data-theme="light" class="light">
+<html lang={lang} data-theme="light" class="light">
 	<head>
 		<BaseHead title={title} description={description} image={heroImage} />
 		<meta property="og:type" content="article" />
@@ -189,12 +196,12 @@ const {
 							<div class="title">
 								<h1>{title}</h1>
 								<div class="date">
-									Published on{" "}
-									<FormattedDate date={pubDate} />
+									{t.publishedOn}{" "}
+									<FormattedDate date={pubDate} locale={lang} />
 									{updatedDate && (
 										<div class="last-updated-on">
-											Last updated on{" "}
-											<FormattedDate date={updatedDate} />
+											{t.lastUpdatedOn}{" "}
+											<FormattedDate date={updatedDate} locale={lang} />
 										</div>
 									)}
 								</div>
@@ -209,7 +216,7 @@ const {
 						readingTimeMin={readingTimeMin}
 						authorName={Astro.props.author || author.name}
 					/>
-					<PostNav prev={prevPost} next={nextPost} />
+					<PostNav prev={prevPost} next={nextPost} lang={lang} />
 				</div>
 			</article>
 		</main>

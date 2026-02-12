@@ -4,13 +4,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 export async function GET(context) {
 	const posts = await getCollection('blog');
+    const enPosts = posts.filter(p => p.id.startsWith('en/'));
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		items: posts.map((post) => ({
+		items: enPosts.map((post) => ({
 			...post.data,
-			link: `/blog/${post.id}/`,
+			link: `/blog/${post.id.replace(/^en\//, '')}/`,
 		})),
 	});
 }

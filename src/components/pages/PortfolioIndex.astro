@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../BaseHead.astro";
+import Header from "../sections/Header.astro";
+import Footer from "../sections/Footer.astro";
+import HeroSection from "../sections/HeroSection.astro";
+import PortfolioCard from "../ui/card/PortfolioCard.astro";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+  lang: 'en' | 'pt-br';
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const allProjects = await getCollection("portfolio");
+const projects = allProjects
+    .filter(p => p.id.startsWith(lang + '/'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light" class="light">
+  <head>
+    <BaseHead title={t('nav.portfolio')} description={t('hero.subtitle')} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <HeroSection
+        title={t('portfolio.latest')}
+        subtitle={t('hero.subtitle')}
+      />
+
+      <section class="w-full py-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
+            {projects.map((project) => <PortfolioCard project={project} lang={lang} />)}
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

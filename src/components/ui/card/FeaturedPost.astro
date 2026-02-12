@@ -9,8 +9,12 @@ import { author } from "../../../data/author";
 interface Props {
   post: CollectionEntry<"blog">;
   readingTimeMin?: number;
+  lang?: 'en' | 'pt-br';
 }
-const { post, readingTimeMin = 0 } = Astro.props as Props;
+const { post, readingTimeMin = 0, lang = 'en' } = Astro.props as Props;
+
+const slug = post.id.replace(new RegExp(`^${lang}/`), '');
+const rootPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
 ---
 
 <div
@@ -53,10 +57,10 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
     <div
       class="flex items-center gap-3 text-sm text-[color:var(--color-text-muted)]"
     >
-      <FormattedDate date={post.data.pubDate} />
+      <FormattedDate date={post.data.pubDate} locale={lang} />
       <span>•</span>
       <a
-        href={`/blog/author/${slugify(post.data.author || author.name)}/`}
+        href={`${rootPath}/author/${slugify(post.data.author || author.name)}/`}
         class="hover:text-[color:var(--accent)]"
         >{post.data.author || author.name}</a
       >
@@ -90,7 +94,7 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
         <div class="flex gap-2 flex-wrap">
           {post.data.tags.map((t) => (
             <a
-              href={`/blog/tag/${t.replace(/\s+/g, "-").toLowerCase()}/`}
+              href={`${rootPath}/tag/${t.replace(/\s+/g, "-").toLowerCase()}/`}
               class="sw-tag"
             >
               {t}
@@ -101,7 +105,7 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
     }
   </div>
   <a
-    href={`/blog/${post.id}/`}
+    href={`${rootPath}/${slug}/`}
     class="stretched-link"
     aria-label={post.data.title}></a>
 </div>

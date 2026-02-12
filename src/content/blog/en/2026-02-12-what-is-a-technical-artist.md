@@ -10,7 +10,7 @@ tags:
   - UnrealEngine
   - TechnicalArt
   - GameDevelopment
-heroImage: ../../assets/Blog/001/HeroImage.jpg
+heroImage: ../../../assets/Blog/001/HeroImage.jpg
 author: Paulo Henrique
 ---
 # Introduction
@@ -37,7 +37,7 @@ To visualize where the TA operates, let's forget the lists and follow the life c
 
 The process begins with modeling. The character artist delivers an incredible digital sculpture. But for this monster to move in the game, it needs a skeleton. Here enters the first major specialization of the TA: **Rigging and Setup**. We are not just talking about placing bones; we are talking about creating muscle deformation systems, complex constraints, and control interfaces (UI) within Maya or Blender so that the animator can focus on performance rather than fighting the tool.
 
-![teste](../../assets/Blog/001/UnrealEngine_Materials.jpg)
+![teste](../../../assets/Blog/001/UnrealEngine_Materials.jpg)
 
 With the Boss rigged and animated, it needs to go into the Engine. Manually exporting meshes, textures, and animations is an invitation to human error. Here the TA works in **Pipeline and Tools**. They write scripts in Python or C# that automate this bridge. The artist presses a button and the script validates naming conventions, checks the scale, exports the FBX, and imports it into Unity or Unreal with the correct compression settings.
 

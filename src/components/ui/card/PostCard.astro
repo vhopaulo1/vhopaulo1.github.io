@@ -7,8 +7,11 @@ import { slugifyTag as slugify } from '../../../lib/slug';
 
 import { author } from '../../../data/author';
 
-interface Props { post: CollectionEntry<'blog'> }
-const { post } = Astro.props as Props;
+interface Props { 
+  post: CollectionEntry<'blog'>;
+  lang?: 'en' | 'pt-br';
+}
+const { post, lang = 'en' } = Astro.props as Props;
 // Estimate reading time from raw body (Markdown/MDX)
 let readingTimeMin = 0;
 try {
@@ -16,6 +19,9 @@ try {
   const md = (post as any).body ?? '';
   readingTimeMin = calculateReadingTimeFromMarkdown(md || post.data.description || '');
 } catch {}
+
+const slug = post.id.replace(new RegExp(`^${lang}/`), '');
+const rootPath = lang === 'en' ? '/blog' : `/${lang}/blog`;
 ---
 
 <article class="card-surface p-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-5 md:gap-6 items-stretch relative">
@@ -32,9 +38,9 @@ try {
     
     <div class="space-y-3">
         <div class="flex items-center gap-3 text-sm text-[color:var(--color-text-muted)] mt-2">
-            <FormattedDate date={post.data.pubDate} />
+            <FormattedDate date={post.data.pubDate} locale={lang} />
             <span>•</span>
-            <a href={`/blog/author/${slugify(post.data.author || author.name)}/`} class="hover:text-[color:var(--accent)] interactive-link relative z-10">{post.data.author || author.name}</a>
+            <a href={`${rootPath}/author/${slugify(post.data.author || author.name)}/`} class="hover:text-[color:var(--accent)] interactive-link relative z-10">{post.data.author || author.name}</a>
             {readingTimeMin > 0 && (
             <>
                 <span>•</span>
@@ -51,12 +57,12 @@ try {
 
         {post.data.tags && post.data.tags.length > 0 && (
             <div class="flex gap-2 flex-wrap">
-            {post.data.tags.map((t) => <a href={`/blog/tag/${t.replace(/\s+/g,'-').toLowerCase()}/`} class="sw-tag interactive-link relative z-10">{t}</a>)}
+            {post.data.tags.map((t) => <a href={`${rootPath}/tag/${t.replace(/\s+/g,'-').toLowerCase()}/`} class="sw-tag interactive-link relative z-10">{t}</a>)}
             </div>
         )}
     </div>
   </div>
-  <a href={`/blog/${post.id}/`} class="stretched-link" aria-label={post.data.title}></a>
+  <a href={`${rootPath}/${slug}/`} class="stretched-link" aria-label={post.data.title}></a>
 </article>
 
 

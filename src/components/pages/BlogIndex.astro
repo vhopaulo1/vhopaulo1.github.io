@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseHead from "../BaseHead.astro";
+import Footer from "../sections/Footer.astro";
+import Header from "../sections/Header.astro";
+import BlogHero from "../sections/BlogHero.astro";
+import BlogAllArticles from "../sections/BlogAllArticles.astro";
+import BlogPagination from "../ui/nav/BlogPagination.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import FeaturedPost from "../ui/card/FeaturedPost.astro";
+import { calculateReadingTimeFromMarkdown } from "../../lib/reading";
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+  lang: 'en' | 'pt-br';
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const PAGE_SIZE = 6;
+const allPosts = await getCollection("blog");
+const posts = allPosts
+    .filter(p => p.id.startsWith(lang + '/'))
+    .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+
+const [featured, ...rest] = posts;
+const firstPagePosts = rest.slice(0, PAGE_SIZE);
+const totalPages = Math.max(1, Math.ceil(rest.length / PAGE_SIZE));
+
+let featuredReading = 0;
+if (featured) {
+  const { Content } = await render(featured);
+  // Estimate from body or description
+  const md = (featured as any).body ?? '';
+  featuredReading = calculateReadingTimeFromMarkdown(md || featured.data.description || '');
+}
+
+const rootPath = lang === 'en' ? '/blog/' : `/${lang}/blog/`;
+const paginationBasePath = lang === 'en' ? '/blog/page' : `/${lang}/blog/page`;
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light" class="light">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    {totalPages > 1 && <link rel="next" href={`${paginationBasePath}/2/`} />}
+  </head>
+  <body>
+    <Header />
+    <BlogHero title="Blog" subtitle="" />
+    <main class="space-y-7 mx-auto max-w-6xl px-4">
+      {
+        featured && (
+          <section class="card-surface p-4 md:p-5 hover-lift sw-featured-card !border-2 !border-[color:var(--accent)] shadow-lg">
+            <FeaturedPost post={featured} readingTimeMin={featuredReading} lang={lang} />
+          </section>
+        )
+      }
+
+      <BlogAllArticles posts={firstPagePosts} title={t('blog.latest')} lang={lang} />
+      <BlogPagination currentPage={1} totalPages={totalPages} basePath={paginationBasePath} rootPath={rootPath} />
+    </main>
+    <Footer />
+  </body>
+</html>

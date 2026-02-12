@@ -5,9 +5,10 @@ import PostCard from '../ui/card/PostCard.astro';
 interface Props {
   posts: CollectionEntry<'blog'>[];
   title?: string;
+  lang?: 'en' | 'pt-br';
 }
 
-const { posts = [], title = 'All Articles' } = Astro.props as Props;
+const { posts = [], title = 'All Articles', lang = 'en' } = Astro.props as Props;
 ---
 
 <section class="space-y-6">
@@ -18,7 +19,7 @@ const { posts = [], title = 'All Articles' } = Astro.props as Props;
   )}
   <div class="grid grid-cols-1 gap-6">
     {posts.map((post) => (
-      <PostCard post={post} />
+      <PostCard post={post} lang={lang} />
     ))}
   </div>
 </section>

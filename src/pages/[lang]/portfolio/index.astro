@@ -1,0 +1,13 @@
+---
+import PortfolioIndex from '../../../components/pages/PortfolioIndex.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt-br' } },
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<PortfolioIndex lang={lang as 'en' | 'pt-br'} />

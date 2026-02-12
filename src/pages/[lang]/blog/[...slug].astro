@@ -1,22 +1,23 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BlogPostPage from '../../components/pages/BlogPostPage.astro';
-import { calculateReadingTimeFromMarkdown } from '../../lib/reading';
+import BlogPostPage from '../../../components/pages/BlogPostPage.astro';
+import { calculateReadingTimeFromMarkdown } from '../../../lib/reading';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-    const enPosts = posts.filter(p => p.id.startsWith('en/'));
-	return enPosts.map((post) => ({
-		params: { slug: post.id.replace(/^en\//, '') },
+    const ptPosts = posts.filter(p => p.id.startsWith('pt-br/'));
+	return ptPosts.map((post) => ({
+		params: { lang: 'pt-br', slug: post.id.replace(/^pt-br\//, '') },
 		props: post,
 	}));
 }
 
 const post = Astro.props;
+const { lang } = Astro.params;
 const posts = await getCollection('blog');
-const enPosts = posts.filter(p => p.id.startsWith('en/'));
+const ptPosts = posts.filter(p => p.id.startsWith('pt-br/'));
 // Sort by date descending for navigation
-const sorted = enPosts.slice().sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+const sorted = ptPosts.slice().sort((a, b) => +b.data.pubDate - +a.data.pubDate);
 const index = sorted.findIndex((p) => p.id === post.id);
 const prev = index < sorted.length - 1 ? { id: sorted[index + 1].id, title: sorted[index + 1].data.title } : null;
 const next = index > 0 ? { id: sorted[index - 1].id, title: sorted[index - 1].data.title } : null;
@@ -26,4 +27,4 @@ const md = (post as any).body ?? '';
 const readingTimeMin = calculateReadingTimeFromMarkdown(md || post.data.description || '');
 ---
 
-<BlogPostPage post={post} prev={prev} next={next} readingTimeMin={readingTimeMin} lang="en" />
+<BlogPostPage post={post} prev={prev} next={next} readingTimeMin={readingTimeMin} lang={lang as 'en' | 'pt-br'} />

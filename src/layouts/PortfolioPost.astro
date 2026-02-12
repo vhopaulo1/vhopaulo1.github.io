@@ -7,7 +7,9 @@ import Button from "../components/ui/button/Button.astro";
 import MediaGallery from "../components/media/MediaGallery.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<"portfolio">["data"];
+type Props = CollectionEntry<"portfolio">["data"] & {
+    lang?: 'en' | 'pt-br';
+};
 
 const {
     title,
@@ -21,7 +23,14 @@ const {
     whereToPlay,
     screenshots,
     trailer,
+    lang = 'en',
 } = Astro.props;
+
+const t = {
+    en: { company: 'Company', publishDate: 'Publish Date', whereToPlay: 'Where to play', technologies: 'Technologies', visitProject: 'Visit Project' },
+    'pt-br': { company: 'Empresa', publishDate: 'Data de Publicação', whereToPlay: 'Onde jogar', technologies: 'Tecnologias', visitProject: 'Visitar Projeto' },
+}[lang];
+
 
 // Helper to get YouTube embed URL
 function getEmbedUrl(url: string) {
@@ -34,7 +43,7 @@ function getEmbedUrl(url: string) {
 }
 ---
 
-<html lang="en" data-theme="light" class="light">
+<html lang={lang} data-theme="light" class="light">
     <head>
         <BaseHead title={title} description={description} />
         <style>
@@ -142,7 +151,7 @@ function getEmbedUrl(url: string) {
                             company && (
                                 <div>
                                     <span class="sidebar-title text-[var(--color-text-primary)]">
-                                        Company
+                                        {t.company}
                                     </span>
                                     <p class="text-[var(--color-text-secondary)]">
                                         {company}
@@ -154,10 +163,10 @@ function getEmbedUrl(url: string) {
                             <span
                                 class="sidebar-title text-[var(--color-text-primary)]"
                             >
-                                Publish Date
+                                {t.publishDate}
                             </span>
                             <div class="text-[var(--color-text-secondary)]">
-                                <FormattedDate date={pubDate} />
+                                <FormattedDate date={pubDate} locale={lang} />
                             </div>
                         </div>
 
@@ -165,7 +174,7 @@ function getEmbedUrl(url: string) {
                             whereToPlay && whereToPlay.length > 0 && (
                                 <div>
                                     <span class="sidebar-title text-[var(--color-text-primary)]">
-                                        Where to play
+                                        {t.whereToPlay}
                                     </span>
                                     <div class="flex flex-col gap-2 items-start">
                                         {whereToPlay.map((item) => (
@@ -187,7 +196,7 @@ function getEmbedUrl(url: string) {
                             techStack && techStack.length > 0 && (
                                 <div>
                                     <span class="sidebar-title text-[var(--color-text-primary)]">
-                                        Technologies
+                                        {t.technologies}
                                     </span>
                                     <ul class="list-none space-y-2 p-0 m-0">
                                         {techStack.map((tech) => (
@@ -209,7 +218,7 @@ function getEmbedUrl(url: string) {
                                         size="lg"
                                         class="w-full justify-center"
                                     >
-                                        {ctaText || "Visit Project"}
+                                        {ctaText || t.visitProject}
                                     </Button>
                                 </div>
                             )

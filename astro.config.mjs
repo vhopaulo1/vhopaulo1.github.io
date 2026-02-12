@@ -13,6 +13,14 @@ export default defineConfig({
     base: '/',
   integrations: [mdx(), sitemap()],
 
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "pt-br"],
+    routing: {
+        prefixDefaultLocale: false
+    }
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },

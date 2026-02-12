@@ -1,0 +1,96 @@
+---
+import BaseHead from '../BaseHead.astro';
+import Footer from '../sections/Footer.astro';
+import Header from '../sections/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import HeroSection from '../sections/HeroSection.astro';
+import SkillsSection from '../sections/SkillsSection.astro';
+import WorkExperience from '../sections/WorkExperience.astro';
+import Studies from '../sections/Studies.astro';
+import ArrowSeparator from '../ui/separator/ArrowSeparator.astro'
+import GlowLineSeparator from '../ui/separator/GlowLineSeparator.astro'
+
+import { author as authorEn } from '../../data/en/author';
+import { author as authorPt } from '../../data/pt-br/author';
+import { skills as skillsEn } from '../../data/en/skills';
+import { skills as skillsPt } from '../../data/pt-br/skills';
+import { work as workEn } from '../../data/en/work';
+import { work as workPt } from '../../data/pt-br/work';
+import { studies as studiesEn } from '../../data/en/studies';
+import { studies as studiesPt } from '../../data/pt-br/studies';
+
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: 'en' | 'pt-br';
+}
+
+const { lang } = Astro.props;
+
+const t = useTranslations(lang);
+
+const data = {
+  en: {
+    author: authorEn,
+    skills: skillsEn,
+    work: workEn,
+    studies: studiesEn,
+  },
+  'pt-br': {
+    author: authorPt,
+    skills: skillsPt,
+    work: workPt,
+    studies: studiesPt,
+  }
+};
+
+const currentData = data[lang];
+const { author, skills, work, studies } = currentData;
+
+// Logic for localized URLs
+const portfolioHref = lang === 'en' ? '/portfolio' : `/${lang}/portfolio`;
+const blogHref = lang === 'en' ? '/blog' : `/${lang}/blog`;
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light" class="light">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: author.name,
+      url: new URL(lang === 'en' ? '/' : `/${lang}/`, Astro.site).toString(),
+      logo: new URL('/favicon.svg', Astro.site).toString(),
+      sameAs: [
+        'https://x.com/guihubie',
+        'https://www.linkedin.com/in/guilherme-hubie/',
+      ],
+    })} />
+	</head>
+	<body>
+		<Header />
+		<main>
+      <HeroSection
+        title={t('hero.title')}
+        subtitle={t('hero.subtitle')}
+        showCTA
+        primaryCTA={{ text: t('hero.viewProjects'), href: portfolioHref }}
+        secondaryCTA={{ text: t('hero.readBlog'), href: blogHref }}
+      />
+     
+
+    <section class="py-6">
+      <ArrowSeparator />
+      <SkillsSection title={t('section.skills')} skills={skills} />   
+      <GlowLineSeparator />
+      <WorkExperience title={t('section.work')} items={work} />
+      <GlowLineSeparator />
+      <Studies title={t('section.studies')} items={studies} />
+      <GlowLineSeparator />
+    </section>
+		</main>
+		<Footer />
+	</body>
+</html>

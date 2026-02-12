@@ -1,36 +1,5 @@
 ---
-import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/sections/Header.astro";
-import Footer from "../../components/sections/Footer.astro";
-import HeroSection from "../../components/sections/HeroSection.astro";
-import PortfolioCard from "../../components/ui/card/PortfolioCard.astro";
-
-const projects = (await getCollection("portfolio")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+import PortfolioIndex from '../../components/pages/PortfolioIndex.astro';
 ---
 
-<html lang="en" data-theme="light" class="light">
-  <head>
-    <BaseHead title="Portfolio" description="Featured Projects" />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <HeroSection
-        title="Featured Projects"
-        subtitle="A collection of titles and interactive experiences I helped bring to life."
-      />
-
-      <section class="w-full py-10 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
-            {projects.map((project) => <PortfolioCard project={project} />)}
-          </div>
-        </div>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+<PortfolioIndex lang="en" />

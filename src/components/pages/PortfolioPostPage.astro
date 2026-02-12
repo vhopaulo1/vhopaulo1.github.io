@@ -1,0 +1,17 @@
+---
+import { type CollectionEntry, render } from 'astro:content';
+import PortfolioPost from '../../layouts/PortfolioPost.astro';
+
+interface Props {
+  post: CollectionEntry<'portfolio'>;
+  lang: 'en' | 'pt-br';
+}
+
+const { post, lang } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+<PortfolioPost {...post.data} lang={lang}>
+  <Content />
+</PortfolioPost>

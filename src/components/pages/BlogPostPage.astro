@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  prev: { id: string, title: string } | null;
+  next: { id: string, title: string } | null;
+  readingTimeMin: number;
+  lang: 'en' | 'pt-br';
+}
+
+const { post, prev, next, readingTimeMin, lang } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data} prevPost={prev} nextPost={next} readingTimeMin={readingTimeMin} lang={lang}>
+  <Content />
+</BlogPost>
